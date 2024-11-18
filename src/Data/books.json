@@ -1,0 +1,290 @@
+{
+    "library": [
+        {
+            "book": {
+                "title": "El Señor de los Anillos",
+                "pages": 1200,
+                "genre": "Fantasía",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg",
+                "synopsis": "Una aventura épica en un mundo de fantasía llamado la Tierra Media.",
+                "year": 1954,
+                "ISBN": "978-0618640157",
+                "author": {
+                    "name": "J.R.R. Tolkien",
+                    "otherBooks": [
+                        "El Hobbit",
+                        "El Silmarillion"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Juego de Tronos",
+                "pages": 694,
+                "genre": "Fantasía",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg",
+                "synopsis": "En un reino donde las estaciones duran años, una batalla épica por el trono se desarrolla.",
+                "year": 1996,
+                "ISBN": "978-0553103540",
+                "author": {
+                    "name": "George R. R. Martin",
+                    "otherBooks": [
+                        "Choque de Reyes",
+                        "Tormenta de Espadas",
+                        "Festín de Cuervos"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Harry Potter y la piedra filosofal",
+                "pages": 223,
+                "genre": "Fantasía",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550337333i/15868.jpg",
+                "synopsis": "Un niño descubre que es un mago y comienza una aventura en una escuela de magia.",
+                "year": 1997,
+                "ISBN": "978-0747532699",
+                "author": {
+                    "name": "J.K. Rowling",
+                    "otherBooks": [
+                        "Harry Potter y la cámara secreta",
+                        "Harry Potter y el prisionero de Azkaban",
+                        "Harry Potter y el cáliz de fuego"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "1984",
+                "pages": 328,
+                "genre": "Ciencia ficción",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg",
+                "synopsis": "Una inquietante visión de un futuro distópico y totalitario.",
+                "year": 1949,
+                "ISBN": "978-0451524935",
+                "author": {
+                    "name": "George Orwell",
+                    "otherBooks": [
+                        "Rebelión en la granja"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Apocalipsis Zombie",
+                "pages": 444,
+                "genre": "Zombies",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1422626176i/24762432.jpg",
+                "synopsis": "Un gallego se queda en casa en pleno apocalipsis zombie y acaba casi salvando el mundo",
+                "year": 2001,
+                "ISBN": "978-4444532611",
+                "author": {
+                    "name": "Manel Loreiro",
+                    "otherBooks": []
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Dune",
+                "pages": 412,
+                "genre": "Ciencia ficción",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1555447414i/44767458.jpg",
+                "synopsis": "En el inhóspito planeta desértico de Arrakis, una gran intriga política y familiar se desarrolla.",
+                "year": 1965,
+                "ISBN": "978-0441172719",
+                "author": {
+                    "name": "Frank Herbert",
+                    "otherBooks": [
+                        "El mesías de Dune",
+                        "Hijos de Dune"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "La Guía del Autoestopista Galáctico",
+                "pages": 216,
+                "genre": "Ciencia ficción",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1653311117i/6691227.jpg",
+                "synopsis": "Un viaje absurdo y cómico por el espacio, con toallas.",
+                "year": 1979,
+                "ISBN": "978-0345391803",
+                "author": {
+                    "name": "Douglas Adams",
+                    "otherBooks": [
+                        "El restaurante del fin del mundo",
+                        "La vida, el universo y todo lo demás"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Neuromante",
+                "pages": 271,
+                "genre": "Ciencia ficción",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1554437249i/6088007.jpg",
+                "synopsis": "Una visión profética de la ciber-realidad y la inteligencia artificial.",
+                "year": 1984,
+                "ISBN": "978-0441569595",
+                "author": {
+                    "name": "William Gibson",
+                    "otherBooks": [
+                        "Conde Cero",
+                        "Mona Lisa Acelerada"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Fahrenheit 451",
+                "pages": 249,
+                "genre": "Ciencia ficción",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1383718290i/13079982.jpg",
+                "synopsis": "Una sociedad futura donde los libros están prohibidos y 'bomberos' queman cualquier libro que encuentren.",
+                "year": 1953,
+                "ISBN": "978-1451673319",
+                "author": {
+                    "name": "Ray Bradbury",
+                    "otherBooks": [
+                        "Crónicas marcianas",
+                        "El hombre ilustrado"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "El resplandor",
+                "pages": 688,
+                "genre": "Terror",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1641398308i/60038757.jpg",
+                "synopsis": "Una familia se muda a un hotel aislado para el invierno donde una presencia siniestra influye en el padre hacia la violencia.",
+                "year": 1977,
+                "ISBN": "978-0307743657",
+                "author": {
+                    "name": "Stephen King",
+                    "otherBooks": [
+                        "Carrie",
+                        "It"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Drácula",
+                "pages": 418,
+                "genre": "Terror",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387151694i/17245.jpg",
+                "synopsis": "La historia del infame conde Drácula y su intento de mudarse de Transilvania a Inglaterra.",
+                "year": 1897,
+                "ISBN": "978-0486411095",
+                "author": {
+                    "name": "Bram Stoker",
+                    "otherBooks": [
+                        "La joya de las siete estrellas",
+                        "La madriguera del gusano blanco"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Frankenstein",
+                "pages": 280,
+                "genre": "Terror",
+                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1669159060i/63631742.jpg",
+                "synopsis": "Un científico obsesionado crea una criatura viva a partir de partes de cuerpos robadas, con consecuencias desastrosas.",
+                "year": 1818,
+                "ISBN": "978-0486282114",
+                "author": {
+                    "name": "Mary Shelley",
+                    "otherBooks": [
+                        "El último hombre",
+                        "Valperga"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Cien años de soledad",
+                "pages": 432,
+                "genre": "Realismo mágico",
+                "cover": "https://images.cdn2.buscalibre.com/fit-in/360x360/38/12/3812f54c9c10992f538ead2c95d775ed.jpg",
+                "synopsis": "La historia de la familia Buendía a lo largo de varias generaciones en el pueblo ficticio de Macondo.",
+                "year": 1967,
+                "ISBN": "978-0060883287",
+                "author": {
+                    "name": "Gabriel García Márquez",
+                    "otherBooks": [
+                        "El amor en los tiempos del cólera",
+                        "Crónica de una muerte anunciada"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "La sombra del viento",
+                "pages": 544,
+                "genre": "Ficción histórica",
+                "cover": "https://images.cdn2.buscalibre.com/fit-in/360x360/4a/f8/4af862174ba709db62744f988c62e3b6.jpg",
+                "synopsis": "Un joven descubre un libro de un autor olvidado en un misterioso cementerio de libros prohibidos.",
+                "year": 2001,
+                "ISBN": "978-8408044292",
+                "author": {
+                    "name": "Carlos Ruiz Zafón",
+                    "otherBooks": [
+                        "El juego del ángel",
+                        "El prisionero del cielo"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Abzurdah",
+                "pages": 296,
+                "genre": "Novela Romantica",
+                "cover": "https://tienda.planetadelibros.com.ar/cdn/shop/files/386410_portada_abzurdah_cielo-latini_201504292035.jpg?v=1694634303",
+                "synopsis": "Una muchacha camina al borde del abismo. Cielo Latini, niña precoz, sensible y creativa, educada en una familia “normal”, siempre fue una enfant terrible fascinada por el arte y por hacer público su derecho a ser anoréxica, a los intentos de suicidio y a la autoflagelación. Pero al final llega la resurrección, la cura a través de la palabra.",
+                "year": 2023,
+                "ISBN": "9789504984030",
+                "author": {
+                    "name": "Cielo Latini.",
+                    "otherBooks": [
+                        "Chubasco",
+                        "Imagina el cielo"
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
+                "title": "Romper el circulo",
+                "pages": 400,
+                "genre": "Novela Romantica",
+                "cover": "https://contentv2.tap-commerce.com//cover/large/9789504988052_1.jpg?id_com=717",
+                "synopsis": "Lily no siempre lo ha tenido fácil, pero eso nunca le ha impedido luchar por la vida que quiere y ha recorrido un largo camino para llegar donde está ahora. Su vida comienza a cambiar el día que Ryle Kincaid, un extraordinario neurocirujano, se fija en ella. Ryle es asertivo, terco, tal vez incluso un poco arrogante, pero también es sensible, tremendamente atractivo, brillante, y tiene una debilidad total por ella.",
+                "year": 2024,
+                "ISBN": "9789504988052",
+                "author": {
+                    "name": "Colleen Hoover.",
+                    "otherBooks": [
+                        "Si",
+                        "Imagina el cielo"
+                    ]
+                }
+            }
+        }
+    ]
+}
