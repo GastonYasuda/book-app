@@ -37,6 +37,7 @@ export type bookContextType={
     booky:Book[],
     favStorage:Book[],
     storedBook:Book[],
-    setSelectedValue:()=>void;
+    selectedValue?:Book[],
+    setSelectedValue?:()=>void;
 }
 

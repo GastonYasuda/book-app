@@ -8,39 +8,50 @@ import FilterAside from "./FilterAside";
 import CountCards from "./CountCards";
 import BookResult from "./BookResult";
 
+type selectedValueProp = {
+    OptionName: string;
+    Selected: string;
+}
+
 const BookList = () => {
 
     const { bookList } = useContext(BookContext) as bookContextType
-    const [showResult, setShowResult] = useState<boolean>(true)
+
     const [favorites, setFavorites] = useState<Book[]>(() => {
         // Recuperar favoritos del localStorage al cargar la página
         const storedFavs = JSON.parse(localStorage.getItem('BookFavArray') || '[]');
-
         return storedFavs;
     });
+    const [result, setResult] = useState<Book[]>([]);
+    const [selectedValue, setSelectedValue] = useState<selectedValueProp>();
+
+
 
     useEffect(() => {
         localStorage.setItem("BookFavArray", JSON.stringify(favorites));
-    }, [favorites])
+
+
+    }, [favorites, result, selectedValue])
+
 
 
     return (
         <BookContexProvider>
             <div className="main">
-                <AppHeader />
-
+                <AppHeader setSelectedValue={setSelectedValue} />
 
                 <div className="main_container">
 
-                    <FilterAside />
+                    <FilterAside setSelectedValue={setSelectedValue} />
 
                     <div className="bookList_container">
 
                         <div className="bookList_container-counterBooks">
                             <h1>Book App</h1>
                             <CountCards favorites={favorites} setFavorites={setFavorites} />
-                            {showResult ?
-                                <BookResult />
+                            {selectedValue?.OptionName !== undefined ?
+                                <BookResult selectedValue={selectedValue} result={result} setResult={setResult} favorites={favorites}
+                                    setFavorites={setFavorites} />
                                 :
                                 <div className="bookList_container-book">
                                     {bookList.map((boo, index) => {

@@ -11,7 +11,7 @@ const FavMark = ({ settingFavs }: EachBookProps) => {
     const [favoriteArray, setFavoriteArray] = useState<Book[]>([])
 
     useEffect(() => {
-        //   if (favoriteArray.length !== 0) console.log(favoriteArray);
+        if (favoriteArray.length !== 0) console.log(favoriteArray);
 
     }, [favoriteArray]);
 
@@ -19,11 +19,9 @@ const FavMark = ({ settingFavs }: EachBookProps) => {
 
     const AddFav = (bookClick: Book) => {
 
-        // console.log(bookClick);
 
         setFavoriteArray((prevList) => {
             const updatedList = [...prevList, bookClick];
-            console.log(updatedList);
 
             return updatedList; // Devuelve el nuevo estado
         });

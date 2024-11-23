@@ -13,7 +13,6 @@ export function BookContexProvider({ children }: Props) {
     // Cambia el tipo de estado a Book[]
     const [bookList, setBookList] = useState<Book[]>([]);
     const [favArray, setFavArray] = useState<string[]>([]);
-    const [selectedValue, setSelectedValue] = useState<string>("");
 
 
 
@@ -31,7 +30,7 @@ export function BookContexProvider({ children }: Props) {
 
 
     return (
-        <BookContext.Provider value={{ bookList, setBookList, favArray, setFavArray, selectedValue, setSelectedValue }}>
+        <BookContext.Provider value={{ bookList, setBookList, favArray, setFavArray }}>
             {children}
         </BookContext.Provider>
     );

@@ -1,33 +1,36 @@
 import { useContext, useEffect, useState } from "react";
 import BookContext from "../Context/BookContext";
 import { Book, bookContextType } from "../typeInterface/BookTypes";
-import { Link } from "react-bootstrap/lib/Navbar";
-import { Card } from "react-bootstrap";
 import EachBook from "./EachBook";
 
+type bookResult = {
+    selectedValue: Book[];
+    result: Book;
+    setResult: () => void;
+    favorites: Book[];
+    setFavorites: Book[];
+}
 
-const BookResult = () => {
-    const { bookList, selectedValue } = useContext(BookContext) as bookContextType
 
-    const [result, setResult] = useState<Book[]>([]);
-    const [favorites, setFavorites] = useState<Book[]>(() => {
-        // Recuperar favoritos del localStorage al cargar la página
-        const storedFavs = JSON.parse(localStorage.getItem('BookFavArray') || '[]');
+const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites }: bookResult) => {
+    const { bookList } = useContext(BookContext) as bookContextType
 
-        return storedFavs;
-    });
 
     useEffect(() => {
-        console.log(selectedValue);
-        const filter = bookList.filter(item => item.year === selectedValue || item.author.name === selectedValue || item.genre === selectedValue)
 
+        const filter = bookList.filter(item => item.year === selectedValue.Selected || item.author.name === selectedValue.Selected || item.genre === selectedValue.Selected)
+
+        //que muestre cuando hago click
         setResult(filter);
 
-
-    }, [selectedValue])
+    }, [bookList, selectedValue.Selected])
 
     return (
         <div>
+            {selectedValue !== undefined &&
+                <h3 className="genreStyle-h3">{`${selectedValue.OptionName}: ${selectedValue.Selected}`}</h3>
+            }
+
 
             <div className="bookList_container-book">
                 {result.map((boo, index) => {

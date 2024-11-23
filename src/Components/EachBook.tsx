@@ -23,6 +23,7 @@ const EachBook = ({ boo, favorites, setFavorites }: EachBookProps) => {
     }, [boo.ISBN, favorites]);
 
     const AddFav = (bookClick: Book) => {
+
         if (fav) {
             // Si ya es favorito, quitarlo del array
             setFavorites((prev) => prev.filter((book) => book.ISBN !== bookClick.ISBN));
