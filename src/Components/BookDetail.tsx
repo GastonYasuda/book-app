@@ -1,13 +1,13 @@
 import { Book, bookContextType } from "../typeInterface/BookTypes";
-import { useContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import BookContext from "../Context/BookContext";
 import Button from 'react-bootstrap/Button';
 import FavMark from "./FavMark";
 
 type BookDetailProps = {
-    setShowBookDetail: () => void;
+    setShowBookDetail: (value: boolean) => void;
     favorites: Book[];
-    setFavorites: Book[];
+    setFavorites: Dispatch<SetStateAction<Book[]>>;
 }
 
 const BookDetail = ({ setShowBookDetail, favorites, setFavorites }: BookDetailProps) => {

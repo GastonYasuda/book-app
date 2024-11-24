@@ -1,19 +1,17 @@
 import { Dispatch, SetStateAction } from "react";
 
-type Author = {
+export type Author = {
     name: string;
     otherBooks: string[];
 };
 
 export type Book ={
-    id?:`${string}-${string}-${string}-${string}-${string}`;
-    fav?:boolean;
     title: string;
     pages: number;
     genre: string;
     cover: string;
     synopsis: string;
-    year: number;
+    year: string;
     ISBN: string;
     author: Author;
 };
@@ -28,7 +26,7 @@ export type Library = {
 
 
 export type bookContextType={
-    bookList: Book[],
+     bookList: Book[],
     setBookList:(value:Book[])=>void,
     favArray:Book[],
     setFavArray: Dispatch<SetStateAction<Book[]>> ,
@@ -40,6 +38,6 @@ export type bookContextType={
     selectedValue?:Book[],
     setSelectedValue?:()=>void;
     forBookDetail:string;
-    setForBookDetail:()=>void;
+    setForBookDetail:(value:Book['ISBN'])=>void;
 }
 

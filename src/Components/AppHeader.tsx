@@ -2,7 +2,7 @@
 import logo from '../assets/logoTanuki.png';
 
 type AppHeaderProps = {
-    setSelectedValue: (value: undefined) => void; // Define setSelectedValue como una función
+    setSelectedValue: (value: undefined) => void;
 };
 
 const AppHeader = ({ setSelectedValue }: AppHeaderProps) => {

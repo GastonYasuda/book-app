@@ -2,13 +2,13 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import favImg from '../assets/fav.png';
 import notFavImg from '../assets/notFav.png';
 import { Book } from '../typeInterface/BookTypes';
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 type FavMarkProps = {
     boo: Book;
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[]>>;
+    setFavorites: Dispatch<SetStateAction<Book[]>>; // Ajustado aquí
 };
 
 const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
@@ -30,7 +30,7 @@ const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
             closeOnClick: true,
             pauseOnHover: false,
             draggable: false,
-            });
+        });
     };
     const removeNotify = () => {
         toast.warn(`${boo.title} Removed from Favs!`, {
@@ -41,12 +41,12 @@ const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
             closeOnClick: true,
             pauseOnHover: false,
             draggable: false,
-            });   
+        });
     };
 
 
 
-    const AddFav = (bookClick: Book) => {        
+    const AddFav = (bookClick: Book) => {
         if (fav) {
 
             // Si ya es favorito, quitarlo del array
@@ -54,7 +54,7 @@ const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
             setFav(false);
             removeNotify()
 
-            
+
         } else {
             // Si no es favorito, agregarlo al array
             setFavorites((prev) => [...prev, bookClick]);

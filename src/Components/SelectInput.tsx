@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
+import { Author } from "../typeInterface/BookTypes";
 
-interface SelectInputProps {
-    selectItem: string[]; // Opciones del select
-    optionName: string;   // Texto inicial (opción predeterminada)
-    setSelectedValue: (value: string) => void; // Función para enviar el valor seleccionado
-}
+type filterAsideProps = {
+    setSelectedValue: (value: SelectedValueProp | undefined) => void; // Ahora acepta un objeto o undefined
+    selectItem: string[] | Author[];
+    optionName: string;
+};
 
-type selectedValueProp = {
+type SelectedValueProp = {
     OptionName: string;
-    Selected: string;
-}
+    Selected: string | Author;
+};
 
-const SelectInput: React.FC<SelectInputProps> = ({ selectItem, optionName, setSelectedValue }) => {
+
+
+const SelectInput = ({ selectItem, optionName, setSelectedValue }: filterAsideProps) => {
     const [selectedOption, setSelectedOption] = useState<string>("");
 
     useEffect(() => {
-        setSelectedValue({}); // Resetea el valor inicial al montar el componente
+        setSelectedValue(undefined); // Resetea el valor inicial al montar el componente
     }, [setSelectedValue]);
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const eventTarget = event.target.value;
 
         // Envía el valor seleccionado
-        setSelectedValue<selectedValueProp>({
+        setSelectedValue({
             OptionName: optionName,
             Selected: selectItem[parseInt(eventTarget, 10)]
         });
@@ -42,9 +45,9 @@ const SelectInput: React.FC<SelectInputProps> = ({ selectItem, optionName, setSe
                 <option value="" disabled>
                     {optionName} {/* Opción predeterminada */}
                 </option>
-                {selectItem?.map((item, i) => (
+                {selectItem.map((item, i) => (
                     <option key={i} value={i}>
-                        {item}
+                        {typeof item === "string" ? item : item.name} {/* Asegura que sea string */}
                     </option>
                 ))}
             </Form.Select>

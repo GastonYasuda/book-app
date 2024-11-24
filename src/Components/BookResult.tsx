@@ -1,18 +1,24 @@
 import { Dispatch, SetStateAction, useContext, useEffect } from "react";
 import BookContext from "../Context/BookContext";
-import { Book, bookContextType } from "../typeInterface/BookTypes";
+import { Author, Book, bookContextType } from "../typeInterface/BookTypes";
 import EachBook from "./EachBook";
 
 type bookResult = {
-    selectedValue: Book[];
-    result: Book;
-    setResult: () => void;
+    // selectedValue: Book[];
+    result: Book[];
+    setResult: Dispatch<SetStateAction<Book[]>>;
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
     setShowBookDetail: (value: boolean) => void;
-
+    setSelectedValue: (value: undefined) => void;
+    selectedValue: selectedValueProp;
 }
 
+type selectedValueProp = {
+    OptionName: string;
+    Selected: string | number | Author;
+
+}
 
 const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites, setShowBookDetail, setSelectedValue }: bookResult) => {
     const { bookList } = useContext(BookContext) as bookContextType
@@ -23,7 +29,7 @@ const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites,
 
         setResult(filter);
 
-    }, [bookList, selectedValue.Selected])
+    }, [bookList, selectedValue.Selected, setResult])
 
     return (
         <div>

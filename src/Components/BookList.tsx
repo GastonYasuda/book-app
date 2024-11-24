@@ -1,6 +1,6 @@
 import BookContext, { BookContexProvider } from "../Context/BookContext";
 import { useContext, useEffect, useState } from "react";
-import { Book, bookContextType } from "../typeInterface/BookTypes";
+import { Author, Book, bookContextType } from "../typeInterface/BookTypes";
 import EachBook from "./EachBook";
 import FavoriteBooks from "./FavoriteBooks";
 import AppHeader from "./AppHeader";
@@ -10,10 +10,9 @@ import BookResult from "./BookResult";
 import BookDetail from "./BookDetail";
 import { ToastContainer } from "react-toastify";
 
-
-type selectedValueProp = {
+type SelectedValueProp = {
     OptionName: string;
-    Selected: string;
+    Selected: string | number | Author;
 }
 
 const BookList = () => {
@@ -26,12 +25,14 @@ const BookList = () => {
         return storedFavs;
     });
     const [result, setResult] = useState<Book[]>([]);
-    const [selectedValue, setSelectedValue] = useState<selectedValueProp>();
+    const [selectedValue, setSelectedValue] = useState<SelectedValueProp | undefined>();
     const [showBookDetail, setShowBookDetail] = useState<boolean>()
 
 
 
     useEffect(() => {
+        //    console.log(selectedValue);
+
         localStorage.setItem("BookFavArray", JSON.stringify(favorites));
 
 

@@ -4,6 +4,8 @@ import App from './App.tsx'
 import './Style.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 createRoot(document.getElementById('root')!).render(
   //<StrictMode>

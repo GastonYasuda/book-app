@@ -1,19 +1,19 @@
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SelectInput from "./SelectInput";
 import BookContext from "../Context/BookContext";
-import { bookContextType } from "../typeInterface/BookTypes";
+import { Author, Book, bookContextType } from "../typeInterface/BookTypes";
 import Button from 'react-bootstrap/Button';
 
 
 type filterAsideProps = {
-    setSelectedValue: Dispatch<SetStateAction<string>>;
+    setSelectedValue: (value: undefined) => void;
 }
 
 const FilterAside = ({ setSelectedValue }: filterAsideProps) => {
     const { bookList } = useContext(BookContext) as bookContextType;
     const [genreOptions, setGenreOptions] = useState<string[]>([]);
-    const [yearOptions, setYearOptions] = useState<number[]>([]);
-    const [authorOptions, setAuthorOptions] = useState<string[]>([]);
+    const [yearOptions, setYearOptions] = useState<string[]>([]);
+    const [authorOptions, setAuthorOptions] = useState<Author[]>([]);
 
 
 
@@ -32,15 +32,25 @@ const FilterAside = ({ setSelectedValue }: filterAsideProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [bookList]);
 
-    const itemOptions = <K extends keyof typeof bookList[number]>(option: K, setState: React.Dispatch<React.SetStateAction<(typeof bookList[number][K])[]>>, isAuthor: boolean) => {
-        if (isAuthor) {
-            const optionResult = bookList.map(element => element[option]["name"]);
-            if (optionResult) setState(prev => Array.from(new Set([...prev, ...optionResult])));
+    const itemOptions = <K extends keyof Book>(option: K, setState: React.Dispatch<React.SetStateAction<Book[K][]>>, isAuthorOption: boolean) => {
+        if (isAuthorOption && option === "author") {
+            const optionResult = bookList
+                .map(element => {
+                    const value = element[option];
+                    return typeof value === "object" && value !== null && "name" in value
+                        ? (value as Author).name
+                        : null;
+                })
+                .filter((val): val is Book[K] => val !== null); // Asegura que sea del tipo correcto
+            setState(prev => Array.from(new Set([...prev, ...optionResult])));
         } else {
-            const optionResult = bookList.map(element => element[option]);
+            const optionResult = bookList
+                .map(element => element[option])
+                .filter((val): val is Book[K] => val !== undefined); // Filtra valores indefinidos
             setState(prev => Array.from(new Set([...prev, ...optionResult])));
         }
     };
+
 
 
     return (

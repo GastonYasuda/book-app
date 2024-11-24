@@ -9,6 +9,8 @@ interface EachBookProps {
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
     setShowBookDetail: (value: boolean) => void;
+    setSelectedValue: (value: undefined) => void;
+
 }
 
 
