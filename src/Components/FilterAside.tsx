@@ -6,20 +6,22 @@ import Button from 'react-bootstrap/Button';
 
 
 type filterAsideProps = {
-    setSelectedValue: (value: undefined) => void;
+    setSelectedValue: (value: SelectedValueProp | undefined) => void; // Ahora acepta un objeto o undefined
 }
+
+type SelectedValueProp = {
+    OptionName: string;
+    Selected: string | Author | number;
+};
+
 
 const FilterAside = ({ setSelectedValue }: filterAsideProps) => {
     const { bookList } = useContext(BookContext) as bookContextType;
     const [genreOptions, setGenreOptions] = useState<string[]>([]);
-    const [yearOptions, setYearOptions] = useState<string[]>([]);
+    const [yearOptions, setYearOptions] = useState<number[]>([]);
     const [authorOptions, setAuthorOptions] = useState<Author[]>([]);
 
-
-
     useEffect(() => {
-
-
         if (!bookList) return; // Validar que `bookList` no sea undefined
 
         // Obtener géneros únicos
@@ -50,8 +52,6 @@ const FilterAside = ({ setSelectedValue }: filterAsideProps) => {
             setState(prev => Array.from(new Set([...prev, ...optionResult])));
         }
     };
-
-
 
     return (
         <div className="filterAsideContainer">

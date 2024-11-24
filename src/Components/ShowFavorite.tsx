@@ -12,7 +12,7 @@ interface EachBookProps {
 
 const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
 
-    const removeNotify = (title) => {
+    const removeNotify = (title: string) => {
         toast.warn(`${title} Removed from Favs!`, {
             position: "top-right",
             theme: "light",
@@ -21,14 +21,14 @@ const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
             closeOnClick: true,
             pauseOnHover: false,
             draggable: false,
-            });   
+        });
     };
-        
+
     const remove = (title: string) => {
         console.log('quit');
         const removed = favorites?.filter((fav) => fav.title !== title);
         setFavorites(removed);
-       removeNotify(title)
+        removeNotify(title)
     }
 
     return (

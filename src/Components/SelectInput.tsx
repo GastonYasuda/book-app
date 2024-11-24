@@ -4,13 +4,13 @@ import { Author } from "../typeInterface/BookTypes";
 
 type filterAsideProps = {
     setSelectedValue: (value: SelectedValueProp | undefined) => void; // Ahora acepta un objeto o undefined
-    selectItem: string[] | Author[];
+    selectItem: string[] | number[] | Author[];
     optionName: string;
 };
 
 type SelectedValueProp = {
     OptionName: string;
-    Selected: string | Author;
+    Selected: string | Author | number;
 };
 
 
@@ -47,7 +47,7 @@ const SelectInput = ({ selectItem, optionName, setSelectedValue }: filterAsidePr
                 </option>
                 {selectItem.map((item, i) => (
                     <option key={i} value={i}>
-                        {typeof item === "string" ? item : item.name} {/* Asegura que sea string */}
+                        {typeof item === "string" ? item : item.toString()} {/* Asegura que sea string */}
                     </option>
                 ))}
             </Form.Select>

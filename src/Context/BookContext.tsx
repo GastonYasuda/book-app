@@ -20,13 +20,8 @@ export function BookContexProvider({ children }: Props) {
     const { library } = bookJson;
 
     useEffect(() => {
-        for (const item of library) {
-            // Actualizar el estado correctamente
-            setBookList((prevList) => {
-                const updatedList = [...prevList, item.book];
-                return updatedList; // Devuelve el nuevo estado
-            });
-        }
+        const books = library.map((item) => item.book); // Extrae todos los libros del JSON
+        setBookList(books); // Actualiza el estado con los libros
     }, []);
 
 
