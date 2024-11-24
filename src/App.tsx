@@ -2,6 +2,7 @@ import BookDetail from "./Components/BookDetail";
 import BookList from "./Components/BookList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BookContexProvider } from './Context/BookContext'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {

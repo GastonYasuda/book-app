@@ -2,6 +2,8 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import favImg from '../assets/fav.png';
 import notFavImg from '../assets/notFav.png';
 import { Book } from '../typeInterface/BookTypes';
+import { toast, ToastContainer } from "react-toastify";
+
 
 type FavMarkProps = {
     boo: Book;
@@ -19,24 +21,58 @@ const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
 
     }, [boo.ISBN, favorites]);
 
-    const AddFav = (bookClick: Book) => {
+    const addNotify = () => {
+        toast.success(`${boo.title} Added to Favs!`, {
+            position: "top-right",
+            theme: "light",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            });
+    };
+    const removeNotify = () => {
+        toast.warn(`${boo.title} Removed from Favs!`, {
+            position: "top-right",
+            theme: "light",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            });   
+    };
 
+
+
+    const AddFav = (bookClick: Book) => {        
         if (fav) {
+
             // Si ya es favorito, quitarlo del array
             setFavorites((prev) => prev.filter((book) => book.ISBN !== bookClick.ISBN));
             setFav(false);
+            removeNotify()
+
+            
         } else {
             // Si no es favorito, agregarlo al array
             setFavorites((prev) => [...prev, bookClick]);
             setFav(true);
+            addNotify()
+
         }
     };
 
 
     return (
-        <button onClick={() => AddFav(boo)} className="favButton">
-            {fav ? <img src={favImg} alt="fav" /> : <img src={notFavImg} alt="not fav" />}
-        </button>
+        <>
+            <button onClick={() => AddFav(boo)} className="favButton">
+                {fav ? <img src={favImg} alt="fav" /> : <img src={notFavImg} alt="not fav" />}
+            </button>
+
+        </>
+
     );
 };
 

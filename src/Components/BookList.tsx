@@ -8,6 +8,8 @@ import FilterAside from "./FilterAside";
 import CountCards from "./CountCards";
 import BookResult from "./BookResult";
 import BookDetail from "./BookDetail";
+import { ToastContainer } from "react-toastify";
+
 
 type selectedValueProp = {
     OptionName: string;
@@ -80,6 +82,18 @@ const BookList = () => {
 
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                theme="light"
+                autoClose={1500}
+                hideProgressBar
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+            />
         </BookContexProvider>
     );
 };

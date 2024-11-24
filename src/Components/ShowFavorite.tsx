@@ -1,6 +1,8 @@
 import { Book } from "../typeInterface/BookTypes";
 import favImg from '../assets/fav.png';
 import { Dispatch, SetStateAction } from "react";
+import { toast } from "react-toastify";
+
 
 
 interface EachBookProps {
@@ -10,9 +12,23 @@ interface EachBookProps {
 
 const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
 
+    const removeNotify = (title) => {
+        toast.warn(`${title} Removed from Favs!`, {
+            position: "top-right",
+            theme: "light",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            });   
+    };
+        
     const remove = (title: string) => {
-        const remove = favorites?.filter((fav) => fav.title !== title);
-        setFavorites(remove);
+        console.log('quit');
+        const removed = favorites?.filter((fav) => fav.title !== title);
+        setFavorites(removed);
+       removeNotify(title)
     }
 
     return (
@@ -27,7 +43,6 @@ const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
                         <h5 className="favBookSection_title">{favBook.title}</h5>
                     </div>
                 </div>
-
             ))}
         </div>
     );
