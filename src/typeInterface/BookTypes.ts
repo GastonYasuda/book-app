@@ -39,5 +39,7 @@ export type bookContextType={
     storedBook:Book[],
     selectedValue?:Book[],
     setSelectedValue?:()=>void;
+    forBookDetail:string;
+    setForBookDetail:()=>void;
 }
 

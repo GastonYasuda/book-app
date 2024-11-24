@@ -1,47 +1,34 @@
-import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import { Book } from '../typeInterface/BookTypes';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import favImg from '../assets/fav.png';
-import notFavImg from '../assets/notFav.png';
+import { Book, bookContextType } from '../typeInterface/BookTypes';
+import { Dispatch, SetStateAction, useContext } from 'react';
+import BookContext from '../Context/BookContext';
+import FavMark from './FavMark';
 
 interface EachBookProps {
     boo: Book;
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
+    setShowBookDetail: (value: boolean) => void;
 }
 
 
-const EachBook = ({ boo, favorites, setFavorites }: EachBookProps) => {
-    const [fav, setFav] = useState<boolean>(false);
+const EachBook = ({ boo, favorites, setFavorites, setShowBookDetail, setSelectedValue }: EachBookProps) => {
+    const { setForBookDetail } = useContext(BookContext) as bookContextType
 
-    // Revisar si el libro ya es favorito al cargar el componente
-    useEffect(() => {
-        const isFavorite = favorites.some((book) => book.ISBN === boo.ISBN);
-        setFav(isFavorite);
 
-    }, [boo.ISBN, favorites]);
+    const test = () => {
+        setSelectedValue(undefined)
 
-    const AddFav = (bookClick: Book) => {
-
-        if (fav) {
-            // Si ya es favorito, quitarlo del array
-            setFavorites((prev) => prev.filter((book) => book.ISBN !== bookClick.ISBN));
-            setFav(false);
-        } else {
-            // Si no es favorito, agregarlo al array
-            setFavorites((prev) => [...prev, bookClick]);
-            setFav(true);
-        }
-    };
+        setShowBookDetail(true)
+        setForBookDetail(boo.ISBN)
+    }
 
     return (
         <div className="eachBookButton">
-            <button onClick={() => AddFav(boo)} className="favButton">
-                {fav ? <img src={favImg} alt="fav" /> : <img src={notFavImg} alt="not fav" />}
-            </button>
 
-            <Link to={`/${boo.ISBN}`}>
+            <FavMark boo={boo} favorites={favorites} setFavorites={setFavorites} />
+
+            <div onClick={test}>
                 <Card style={{ width: '11rem' }}>
                     <Card.Img variant="top" src={boo.cover} className="cardImg" />
                     <Card.Body>
@@ -49,7 +36,7 @@ const EachBook = ({ boo, favorites, setFavorites }: EachBookProps) => {
                         <Card.Text>{boo.author.name}</Card.Text>
                     </Card.Body>
                 </Card>
-            </Link>
+            </div>
         </div>
     );
 };

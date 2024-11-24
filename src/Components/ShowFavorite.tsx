@@ -16,9 +16,9 @@ const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
     }
 
     return (
-        <div>
+        <div >
             {Array.isArray(favorites) && favorites.map((favBook, i) => (
-                <div key={i}>
+                <div key={i} className="showFavorite_container">
                     <button onClick={() => remove(favBook.title)} className="favButton">
                         <img src={favImg} alt="fav" />
                     </button>

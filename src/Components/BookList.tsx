@@ -7,6 +7,7 @@ import AppHeader from "./AppHeader";
 import FilterAside from "./FilterAside";
 import CountCards from "./CountCards";
 import BookResult from "./BookResult";
+import BookDetail from "./BookDetail";
 
 type selectedValueProp = {
     OptionName: string;
@@ -24,6 +25,7 @@ const BookList = () => {
     });
     const [result, setResult] = useState<Book[]>([]);
     const [selectedValue, setSelectedValue] = useState<selectedValueProp>();
+    const [showBookDetail, setShowBookDetail] = useState<boolean>()
 
 
 
@@ -49,17 +51,27 @@ const BookList = () => {
                         <div className="bookList_container-counterBooks">
                             <h1>Book App</h1>
                             <CountCards favorites={favorites} setFavorites={setFavorites} />
+
+
                             {selectedValue?.OptionName !== undefined ?
                                 <BookResult selectedValue={selectedValue} result={result} setResult={setResult} favorites={favorites}
-                                    setFavorites={setFavorites} />
+                                    setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />
                                 :
-                                <div className="bookList_container-book">
-                                    {bookList.map((boo, index) => {
-                                        return (
-                                            <EachBook key={index} boo={boo} favorites={favorites}
-                                                setFavorites={setFavorites} />);
-                                    })}
-                                </div>
+                                <>
+                                    {showBookDetail ?
+                                        <BookDetail setShowBookDetail={setShowBookDetail} favorites={favorites}
+                                            setFavorites={setFavorites} />
+                                        :
+                                        <div className="bookList_container-book">
+                                            {bookList.map((boo, index) => {
+                                                return (
+                                                    <EachBook key={index} boo={boo} favorites={favorites}
+                                                        setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />);
+                                            })}
+                                        </div>
+                                    }
+                                </>
+
                             }
                         </div>
 

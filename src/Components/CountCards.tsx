@@ -25,20 +25,20 @@ const CountCards = ({ favorites }: EachBookProps) => {
         <div className="bookList_container-countCards">
             <Card style={{ width: '15rem' }}>
                 <Card.Body>
-                    <Card.Subtitle className="mb-2 text-muted tituloCount">Cantidad de Libros</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted tituloCount">Number of Books</Card.Subtitle>
                     <Card.Text className='countCard-p'>{bookList.length}</Card.Text>
                 </Card.Body>
             </Card>
             <Card style={{ width: '15rem' }}>
                 <Card.Body>
-                    <Card.Subtitle className="mb-2 text-muted tituloCount">Total Sin Guardar</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted tituloCount">Not Favs</Card.Subtitle>
                     <Card.Text className='countCard-p'>{totalCount}</Card.Text>
 
                 </Card.Body>
             </Card>
             <Card style={{ width: '15rem' }}>
                 <Card.Body>
-                    <Card.Subtitle className="mb-2 text-muted tituloCount">Guardados en Favoritos</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted tituloCount">Favorites</Card.Subtitle>
                     <Card.Text className='countCard-p'>{favorites?.length}</Card.Text>
                 </Card.Body>
             </Card>

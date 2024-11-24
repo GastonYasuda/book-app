@@ -45,6 +45,7 @@ const FilterAside = ({ setSelectedValue }: filterAsideProps) => {
 
     return (
         <div className="filterAsideContainer">
+            <h3 className="genreStyle-h3">Filter</h3>
             <SelectInput selectItem={genreOptions} optionName={'Genre'} setSelectedValue={setSelectedValue} />
             <SelectInput selectItem={yearOptions} optionName={'Year'} setSelectedValue={setSelectedValue} />
             <SelectInput selectItem={authorOptions} optionName={'Author'} setSelectedValue={setSelectedValue} />
