@@ -20,7 +20,8 @@ const SelectInput = ({ selectItem, optionName, setSelectedValue }: filterAsidePr
 
     useEffect(() => {
         setSelectedValue(undefined); // Resetea el valor inicial al montar el componente
-    }, [setSelectedValue]);
+
+    }, [setSelectedValue, selectItem]);
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const eventTarget = event.target.value;
@@ -45,11 +46,13 @@ const SelectInput = ({ selectItem, optionName, setSelectedValue }: filterAsidePr
                 <option value="" disabled>
                     {optionName} {/* Opción predeterminada */}
                 </option>
-                {selectItem.map((item, i) => (
+
+                {selectItem.length !== 0 && selectItem.map((item, i) => (
                     <option key={i} value={i}>
-                        {typeof item === "string" ? item : item.toString()} {/* Asegura que sea string */}
+                        {typeof item === "string" ? item : item.toString()}
                     </option>
                 ))}
+
             </Form.Select>
         </div>
     );
