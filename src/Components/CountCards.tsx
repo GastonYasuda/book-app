@@ -7,7 +7,6 @@ interface EachBookProps {
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
     setShowMobileFavs: Dispatch<SetStateAction<boolean>>
-
 }
 
 const CountCards = ({ favorites, setShowMobileFavs }: EachBookProps) => {
@@ -16,38 +15,31 @@ const CountCards = ({ favorites, setShowMobileFavs }: EachBookProps) => {
     const [totalCount, setTotalCount] = useState<number>()
 
     useEffect(() => {
-
         if (favorites !== undefined) {
             setTotalCount(bookList.length - favorites.length)
         }
-
     }, [bookList.length, favorites])
 
     return (
         <div className="bookList_container-countCards">
-            <Card style={{ width: '15rem' }}>
+            <Card style={{ width: '11rem' }}>
                 <Card.Body>
-                    <Card.Subtitle className="mb-2 text-muted tituloCount">Number of Books</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted tituloCount">Books</Card.Subtitle>
                     <Card.Text className='countCard-p'>{bookList.length}</Card.Text>
                 </Card.Body>
             </Card>
-            <Card style={{ width: '15rem' }}>
+            <Card style={{ width: '11rem' }}>
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted tituloCount">Not Favs</Card.Subtitle>
                     <Card.Text className='countCard-p'>{totalCount}</Card.Text>
-
                 </Card.Body>
             </Card>
-            <Card style={{ width: '15rem' }} onClick={() => { setShowMobileFavs(true) }}>
+            <Card style={{ width: '11rem' }} onClick={() => { setShowMobileFavs(true) }}>
                 <Card.Body>
-
-                    <Card.Subtitle className="mb-2 text-muted tituloCount">Favorites</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted tituloCount">Favs</Card.Subtitle>
                     <Card.Text className='countCard-p'>{favorites?.length}</Card.Text>
-
-
                 </Card.Body>
             </Card>
-
         </div>
     );
 };

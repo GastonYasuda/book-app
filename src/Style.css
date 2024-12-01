@@ -1,3 +1,11 @@
+* {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+
 .header_logo {
     width: 100%;
     background-color: rgb(65, 65, 65);
@@ -35,7 +43,6 @@
     overflow: hidden;
 }
 
-
 .filterAsideContainer {
     min-height: 100vh;
     flex: 1;
@@ -45,6 +52,7 @@
     background-color: rgb(42, 42, 42);
     filter: drop-shadow(-5px 7px 8px #000000);
     gap: 10px;
+    z-index: 10;
 
     & .filterHeader {
 
@@ -66,6 +74,8 @@
     margin: 0 25px;
 
     & .bookList_container-counterBooks-header {
+        z-index: 60;
+
         & .stickyClass_container {
             padding-bottom: 3px;
             background-color: #242424;
@@ -74,12 +84,17 @@
         }
     }
 
+    & .bookList_container-counterBooks-body {
+        position: relative;
+        margin-top: 20px;
+        z-index: 60;
+    }
 
     & h1 {
         color: #fff !important;
         margin-top: 20px;
+        font-size: 20px;
     }
-
 }
 
 .card {
@@ -91,7 +106,7 @@
     display: flex;
     flex-direction: row;
     gap: 15px;
-    justify-content: space-between;
+    justify-content: center;
 
     & .card-body {
         background-color: rgb(42, 42, 42);
@@ -103,7 +118,6 @@
     }
 }
 
-
 .bookList_container-book {
     display: flex;
     flex-direction: row;
@@ -112,7 +126,6 @@
     gap: 10px;
     padding-bottom: 30px;
 }
-
 
 .bookList_container-favorites {
     filter: drop-shadow(0px 4px 6px #000000);
@@ -126,9 +139,16 @@
         display: none;
     }
 
-    & h3 {
-        margin: 20px 0;
-        color: #fff !important;
+    .favoritesBookHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & h3 {
+            color: #fff !important;
+            font-size: 20px !important;
+            margin: 0;
+        }
     }
 
     & h4 {
@@ -136,8 +156,6 @@
         padding: 5px;
     }
 }
-
-
 
 .favButton {
     background-color: transparent;
@@ -151,7 +169,6 @@
         width: 30px;
         position: inherit;
         right: 15px;
-
     }
 }
 
@@ -163,10 +180,10 @@
 .card {
     height: 380px;
     filter: drop-shadow(0px 4px 6px #000000);
-
 }
 
 .card-body {
+    padding: 8px !important;
 
     &.card-title {
 
@@ -188,7 +205,6 @@
     & p {
         font-size: 14px !important;
     }
-
 }
 
 .card-img,
@@ -198,15 +214,13 @@
     height: 250px;
 }
 
-
-
-
 .eachBookButton {
     position: relative;
 
     & .card {
         background-color: rgb(42, 42, 42);
-        height: 350px !important;
+        width: 150px;
+        height: 345px !important;
         color: #fff;
     }
 
@@ -226,6 +240,7 @@
 
 .genreStyle-h3 {
     color: #fff;
+    font-size: 15pt;
 }
 
 .bookDetail_container {
@@ -233,7 +248,6 @@
 }
 
 .detailCard_container {
-
     position: relative;
     display: flex;
     flex-direction: column-reverse;
@@ -264,7 +278,6 @@
                 flex-direction: column;
                 margin-left: 15px;
                 width: 60%;
-
             }
         }
     }
@@ -275,22 +288,20 @@
     display: flex;
     flex-direction: column;
 
-
     & .detailCard_container-button {
         margin: 15px;
     }
-
 }
 
 .showFavorite_container {
     margin: 10px;
+    width: 190px;
 
     & .favBookSection {
         display: flex;
         flex-direction: row;
         position: relative;
         align-items: flex-end;
-
 
         & .favBookSection_img {
             width: 50px;
@@ -300,6 +311,8 @@
             font-size: 10px;
             color: #fff !important;
             margin-left: 5px;
+            width: 50% !important;
+            font-size: 11px !important;
         }
     }
 }
@@ -319,12 +332,28 @@
     }
 }
 
+.backgroundImg {
+    position: absolute;
+    width: 90%;
+    left: 42px;
+    top: 110px;
+    opacity: 0.5;
+}
+
+.backgroundImg2 {
+    position: absolute;
+    width: 161%;
+    right: -600px;
+    bottom: 0;
+    opacity: 0.3;
+}
+
 @media (max-width:768px) {
 
     .filterAsideContainer {
         position: absolute;
         z-index: 150;
-        left: -240px;
+        left: -380px;
         transition: all 0.5s ease-in-out;
 
         & .filterHeader {
@@ -335,18 +364,14 @@
 
             & .closeButtonStyle {
                 display: block;
+                margin: 0 10px;
+                padding: 0;
             }
         }
     }
 
-    .showFavorite_container {
-        width: 200px;
-    }
-
-
-
     .showFilter {
-        translate: 240px;
+        translate: 380px;
     }
 
     .bookList_container-counterBooks {
@@ -354,32 +379,23 @@
         margin-bottom: 60px;
         width: 87% !important;
 
-
         & h1 {
-            margin: 20px 0 0 15px
+            margin: 20px 0 0 15px;
+            font-size: 20px !important;
         }
 
         .bookList_container-counterBooks-header {
-            /* position: -webkit-sticky;
-            top: 0; */
-
             & .stickyClass_container {
                 padding-bottom: 3px;
                 background-color: #242424;
-                /* filter: drop-shadow(0px 11px 5px rgba(0, 0, 0, 0.25)); */
                 z-index: 100;
             }
         }
 
-
         .bookList_container-counterBooks-body {
             position: relative;
             margin-top: 20px;
-
         }
-
-
-
     }
 
     .bookList_container-countCards {
@@ -391,22 +407,29 @@
         }
     }
 
-
-
     .bookList_container-favorites {
         position: absolute;
         z-index: 150;
         right: -270px;
         transition: all 0.5s ease-in-out;
 
+        .favoritesBookHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-        & .closeButtonStyle {
-            display: block;
-            position: absolute;
-            right: 15px;
-            top: 20px;
+            & h3 {
+                color: #fff !important;
+                font-size: 20px !important;
+                margin: 0;
+            }
+
+            & .closeButtonStyle {
+                display: block;
+                margin: 0 10px;
+                padding: 0;
+            }
         }
-
     }
 
     .showFav {
@@ -417,6 +440,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        padding: 8px !important;
+
+        & .text-muted {
+            font-size: 11pt !important;
+        }
     }
 
     .header_logo {
@@ -432,9 +460,18 @@
         }
     }
 
-
-
     .gotTopArrow {
         display: block;
+    }
+
+    .backgroundImg {
+        width: 156%;
+        left: -80px;
+        top: 179px;
+    }
+
+    .backgroundImg2 {
+        width: 229%;
+        right: -420px;
     }
 }

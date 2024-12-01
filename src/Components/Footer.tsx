@@ -1,6 +1,7 @@
 import '../FooterStyle.css'
 import githubLogo from '../assets/github-white.png';
 import linkedinLogo from '../assets/linkedin-logo.png';
+import gastonLink from '../assets/webLogo.png';
 
 
 const Footer = () => {
@@ -39,7 +40,7 @@ const Footer = () => {
                 </div>
 
                 <div className="webLink">
-                    <img src={linkedinLogo} alt="my web logo" />
+                    <img src={gastonLink} alt="my web logo" />
                     <span>
                         Conocé mis proyectos en
                         <a

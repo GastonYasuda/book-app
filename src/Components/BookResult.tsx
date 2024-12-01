@@ -4,7 +4,6 @@ import { Author, Book, bookContextType } from "../typeInterface/BookTypes";
 import EachBook from "./EachBook";
 import Button from 'react-bootstrap/Button';
 
-
 type bookResult = {
     // selectedValue: Book[];
     result: Book[];
@@ -19,12 +18,10 @@ type bookResult = {
 type selectedValueProp = {
     OptionName: string;
     Selected: string | number | Author;
-
 }
 
 const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites, setShowBookDetail, setSelectedValue }: bookResult) => {
     const { bookList } = useContext(BookContext) as bookContextType
-
 
     useEffect(() => {
         const filter = bookList.filter(item => item.year === selectedValue.Selected || item.author.name === selectedValue.Selected || item.genre === selectedValue.Selected)
@@ -49,7 +46,6 @@ const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites,
             </div>
 
             <Button variant="primary" className="detailCard_container-button" onClick={() => { setSelectedValue(undefined) }}>Back</Button>
-
         </div>
     )
 };

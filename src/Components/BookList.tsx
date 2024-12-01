@@ -11,9 +11,9 @@ import BookDetail from "./BookDetail";
 import { ToastContainer } from "react-toastify";
 import { StickyContainer, Sticky } from 'react-sticky';
 import Footer from "./Footer";
-import goTop from '../assets/subir.svg'
-
-
+import goTop from '../assets/subir.svg';
+import bgImg from '../assets/paralax_flechas.svg';
+import bgImg2 from '../assets/paralax_cuadrados.svg';
 
 type SelectedValueProp = {
     OptionName: string;
@@ -23,10 +23,7 @@ type SelectedValueProp = {
 const BookList = () => {
     const [isOpen, setOpen] = useState(false)
     const [showMobileFavs, setShowMobileFavs] = useState(false)
-
-
     const { bookList } = useContext(BookContext) as bookContextType
-
     const [favorites, setFavorites] = useState<Book[]>(() => {
         // Recuperar favoritos del localStorage al cargar la página
         const storedFavs = JSON.parse(localStorage.getItem('BookFavArray') || '[]');
@@ -36,13 +33,9 @@ const BookList = () => {
     const [selectedValue, setSelectedValue] = useState<SelectedValueProp | undefined>();
     const [showBookDetail, setShowBookDetail] = useState<boolean>()
 
-
-
     useEffect(() => {
         localStorage.setItem("BookFavArray", JSON.stringify(favorites));
     }, [favorites, result, selectedValue])
-
-
 
     return (
         <BookContexProvider>
@@ -52,25 +45,24 @@ const BookList = () => {
                     <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
 
                     <div className="main_container">
-
                         <FilterAside setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
 
                         <div className="bookList_container">
-
                             <div className="bookList_container-counterBooks">
                                 <div className="bookList_container-counterBooks-header ">
+
                                     <Sticky topOffset={80} className="stickyClass">{({ style }) =>
                                         <div className="stickyClass_container stickyClass" style={style}>
                                             <h1>Book App</h1>
                                             <CountCards favorites={favorites} setFavorites={setFavorites} setShowMobileFavs={setShowMobileFavs} />
-                                        </div>
-                                    }</Sticky>
-
-
+                                        </div>}
+                                    </Sticky>
 
                                 </div>
 
+                                <div className="backgroundImg"><img src={bgImg} alt="Bg Image" /></div>
                                 <div className="bookList_container-counterBooks-body">
+
                                     {selectedValue?.OptionName !== undefined ?
                                         <BookResult selectedValue={selectedValue} result={result} setResult={setResult} favorites={favorites}
                                             setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />
@@ -89,17 +81,13 @@ const BookList = () => {
                                                 </div>
                                             }
                                         </>
-
                                     }
-
                                 </div>
+                                <div className="backgroundImg2"><img src={bgImg2} alt="Bg Image2" /></div>
                             </div>
-
                             <FavoriteBooks favorites={favorites} setFavorites={setFavorites} showMobileFavs={showMobileFavs} setShowMobileFavs={setShowMobileFavs} />
                         </div>
-
                     </div>
-
                     <div className="gotTopArrow">
                         <a href="#top">
                             <img src={goTop} alt="Top Arrow" />
@@ -107,8 +95,6 @@ const BookList = () => {
                     </div>
                 </div>
                 <Footer />
-
-
                 <ToastContainer
                     position="top-right"
                     theme="light"
@@ -122,7 +108,6 @@ const BookList = () => {
                     pauseOnHover={false}
                 />
             </StickyContainer>
-
         </BookContexProvider>
     );
 };
