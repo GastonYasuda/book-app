@@ -3,6 +3,7 @@ import SelectInput from "./SelectInput";
 import BookContext from "../Context/BookContext";
 import { Author, bookContextType } from "../typeInterface/BookTypes";
 import Button from 'react-bootstrap/Button';
+import closeButton from '../assets/close-button.png';
 
 
 type filterAsideProps = {
@@ -64,7 +65,13 @@ const FilterAside = ({ setSelectedValue, isOpen, setOpen, setShowMobileFavs }: f
     return (
 
         < div className={`filterAsideContainer ${isOpen ? 'showFilter' : ''}`}>
-            <h3 className="genreStyle-h3">Filter</h3>
+            <div className="filterHeader">
+                <Button variant="primary" onClick={() => { setOpen(false) }} className="closeButtonStyle">
+                    <img src={closeButton} alt="" />
+                </Button>
+                <h3 className="genreStyle-h3">Filter</h3>
+
+            </div>
             <SelectInput selectItem={genreOptions} optionName={'Genre'} setSelectedValue={setSelectedValue} setOpen={setOpen} />
             <SelectInput selectItem={yearOptions} optionName={'Year'} setSelectedValue={setSelectedValue} setOpen={setOpen} />
             <SelectInput selectItem={authorOptions} optionName={'Author'} setSelectedValue={setSelectedValue} setOpen={setOpen} />

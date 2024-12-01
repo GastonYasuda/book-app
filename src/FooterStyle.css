@@ -1,0 +1,41 @@
+.footer {
+    min-width: 100%;
+    background-color: #393D46;
+    margin: 15px auto 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.footer__container {
+    color: #EFEEEE;
+    width: 80%;
+    margin: auto;
+
+
+    & img {
+        width: 30px;
+        margin: 7px;
+    }
+
+    & a {
+        margin-left: 7px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .footer {
+        margin: 0 auto 0;
+        font-size: 10pt
+    }
+
+    .footer__container {
+        width: 90%;
+
+        & img {
+            margin: 7px 5px;
+        }
+    }
+}

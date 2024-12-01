@@ -9,6 +9,9 @@ import CountCards from "./CountCards";
 import BookResult from "./BookResult";
 import BookDetail from "./BookDetail";
 import { ToastContainer } from "react-toastify";
+import { StickyContainer, Sticky } from 'react-sticky';
+import Footer from "./Footer";
+
 
 
 type SelectedValueProp = {
@@ -42,59 +45,75 @@ const BookList = () => {
 
     return (
         <BookContexProvider>
-            <div className="main">
-                <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
+            <StickyContainer>
 
-                <div className="main_container">
+                <div className="main">
+                    <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
 
-                    <FilterAside setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
+                    <div className="main_container">
 
-                    <div className="bookList_container">
+                        <FilterAside setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
 
-                        <div className="bookList_container-counterBooks">
-                            <h1>Book App</h1>
-                            <CountCards favorites={favorites} setFavorites={setFavorites} />
+                        <div className="bookList_container">
 
-
-                            {selectedValue?.OptionName !== undefined ?
-                                <BookResult selectedValue={selectedValue} result={result} setResult={setResult} favorites={favorites}
-                                    setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />
-                                :
-                                <>
-                                    {showBookDetail ?
-                                        <BookDetail setShowBookDetail={setShowBookDetail} favorites={favorites}
-                                            setFavorites={setFavorites} />
-                                        :
-                                        <div className="bookList_container-book">
-                                            {bookList.map((boo, index) => {
-                                                return (
-                                                    <EachBook key={index} boo={boo} favorites={favorites}
-                                                        setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />);
-                                            })}
+                            <div className="bookList_container-counterBooks">
+                                <div className="bookList_container-counterBooks-header ">
+                                    <Sticky topOffset={80} className="stickyClass">{({ style }) =>
+                                        <div className="stickyClass_container stickyClass" style={style}>
+                                            <h1>Book App</h1>
+                                            <CountCards favorites={favorites} setFavorites={setFavorites} />
                                         </div>
-                                    }
-                                </>
+                                    }</Sticky>
 
-                            }
+
+
+                                </div>
+
+                                <div className="bookList_container-counterBooks-body">
+                                    {selectedValue?.OptionName !== undefined ?
+                                        <BookResult selectedValue={selectedValue} result={result} setResult={setResult} favorites={favorites}
+                                            setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />
+                                        :
+                                        <>
+                                            {showBookDetail ?
+                                                <BookDetail setShowBookDetail={setShowBookDetail} favorites={favorites}
+                                                    setFavorites={setFavorites} />
+                                                :
+                                                <div className="bookList_container-book">
+                                                    {bookList.map((boo, index) => {
+                                                        return (
+                                                            <EachBook key={index} boo={boo} favorites={favorites}
+                                                                setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />);
+                                                    })}
+                                                </div>
+                                            }
+                                        </>
+
+                                    }
+
+                                </div>
+                            </div>
+
+                            <FavoriteBooks favorites={favorites} setFavorites={setFavorites} showMobileFavs={showMobileFavs} setShowMobileFavs={setShowMobileFavs} />
                         </div>
 
-                        <FavoriteBooks favorites={favorites} setFavorites={setFavorites} showMobileFavs={showMobileFavs} setShowMobileFavs={setShowMobileFavs} />
                     </div>
-
                 </div>
-            </div>
-            <ToastContainer
-                position="top-right"
-                theme="light"
-                autoClose={1500}
-                hideProgressBar
-                newestOnTop
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable={false}
-                pauseOnHover={false}
-            />
+                <Footer />
+                <ToastContainer
+                    position="top-right"
+                    theme="light"
+                    autoClose={1500}
+                    hideProgressBar
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss={false}
+                    draggable={false}
+                    pauseOnHover={false}
+                />
+            </StickyContainer>
+
         </BookContexProvider>
     );
 };
