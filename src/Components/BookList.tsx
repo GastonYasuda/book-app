@@ -11,6 +11,7 @@ import BookDetail from "./BookDetail";
 import { ToastContainer } from "react-toastify";
 import { StickyContainer, Sticky } from 'react-sticky';
 import Footer from "./Footer";
+import goTop from '../assets/subir.svg'
 
 
 
@@ -47,7 +48,7 @@ const BookList = () => {
         <BookContexProvider>
             <StickyContainer>
 
-                <div className="main">
+                <div className="main" id="top">
                     <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
 
                     <div className="main_container">
@@ -98,8 +99,16 @@ const BookList = () => {
                         </div>
 
                     </div>
+
+                    <div className="gotTopArrow">
+                        <a href="#top">
+                            <img src={goTop} alt="Top Arrow" />
+                        </a>
+                    </div>
                 </div>
                 <Footer />
+
+
                 <ToastContainer
                     position="top-right"
                     theme="light"

@@ -304,6 +304,21 @@
     }
 }
 
+.gotTopArrow {
+    display: none;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    right: -80%;
+    z-index: 150;
+    border: none;
+    opacity: 0.4;
+
+    & img {
+        width: 70px;
+    }
+}
+
 @media (max-width:768px) {
 
     .filterAsideContainer {
@@ -417,4 +432,9 @@
         }
     }
 
+
+
+    .gotTopArrow {
+        display: block;
+    }
 }

@@ -12,7 +12,7 @@ type bookResult = {
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
     setShowBookDetail: (value: boolean) => void;
-    setSelectedValue: (value: undefined) => void;
+    setSelectedValue: (value: boolean | undefined) => void;
     selectedValue: selectedValueProp;
 }
 
