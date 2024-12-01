@@ -6,9 +6,11 @@ import BookContext from '../Context/BookContext';
 interface EachBookProps {
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
+    setShowMobileFavs: Dispatch<SetStateAction<boolean>>
+
 }
 
-const CountCards = ({ favorites }: EachBookProps) => {
+const CountCards = ({ favorites, setShowMobileFavs }: EachBookProps) => {
 
     const { bookList } = useContext(BookContext) as bookContextType
     const [totalCount, setTotalCount] = useState<number>()
@@ -36,10 +38,13 @@ const CountCards = ({ favorites }: EachBookProps) => {
 
                 </Card.Body>
             </Card>
-            <Card style={{ width: '15rem' }}>
+            <Card style={{ width: '15rem' }} onClick={() => { setShowMobileFavs(true) }}>
                 <Card.Body>
+
                     <Card.Subtitle className="mb-2 text-muted tituloCount">Favorites</Card.Subtitle>
                     <Card.Text className='countCard-p'>{favorites?.length}</Card.Text>
+
+
                 </Card.Body>
             </Card>
 

@@ -61,7 +61,7 @@ const BookList = () => {
                                     <Sticky topOffset={80} className="stickyClass">{({ style }) =>
                                         <div className="stickyClass_container stickyClass" style={style}>
                                             <h1>Book App</h1>
-                                            <CountCards favorites={favorites} setFavorites={setFavorites} />
+                                            <CountCards favorites={favorites} setFavorites={setFavorites} setShowMobileFavs={setShowMobileFavs} />
                                         </div>
                                     }</Sticky>
 
