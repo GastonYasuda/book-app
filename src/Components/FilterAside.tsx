@@ -7,6 +7,9 @@ import Button from 'react-bootstrap/Button';
 
 type filterAsideProps = {
     setSelectedValue: (value: SelectedValueProp | undefined) => void; // Ahora acepta un objeto o undefined
+    isOpen: boolean;
+    setOpen: Dispatch<SetStateAction<boolean>>;
+    setShowMobileFavs: Dispatch<SetStateAction<boolean>>;
 }
 
 type SelectedValueProp = {
@@ -15,7 +18,7 @@ type SelectedValueProp = {
 };
 
 
-const FilterAside = ({ setSelectedValue }: filterAsideProps) => {
+const FilterAside = ({ setSelectedValue, isOpen, setOpen, setShowMobileFavs }: filterAsideProps) => {
     const { bookList } = useContext(BookContext) as bookContextType;
     const [genreOptions, setGenreOptions] = useState<string[]>([]);
     const [yearOptions, setYearOptions] = useState<number[]>([]);
@@ -47,16 +50,32 @@ const FilterAside = ({ setSelectedValue }: filterAsideProps) => {
         }
     };
 
+    const filterClearButton = () => {
+        setSelectedValue(undefined)
+    }
+
+    const showFavsButton = () => {
+        setShowMobileFavs(true)
+        setOpen(false)
+
+    }
+
 
     return (
-        <div className="filterAsideContainer">
-            <h3 className="genreStyle-h3">Filter</h3>
-            <SelectInput selectItem={genreOptions} optionName={'Genre'} setSelectedValue={setSelectedValue} />
-            <SelectInput selectItem={yearOptions} optionName={'Year'} setSelectedValue={setSelectedValue} />
-            <SelectInput selectItem={authorOptions} optionName={'Author'} setSelectedValue={setSelectedValue} />
-            <Button variant="primary" onClick={() => { setSelectedValue(undefined) }}>Clear</Button>
 
-        </div>
+        < div className={`filterAsideContainer ${isOpen ? 'showFilter' : ''}`}>
+            <h3 className="genreStyle-h3">Filter</h3>
+            <SelectInput selectItem={genreOptions} optionName={'Genre'} setSelectedValue={setSelectedValue} setOpen={setOpen} />
+            <SelectInput selectItem={yearOptions} optionName={'Year'} setSelectedValue={setSelectedValue} setOpen={setOpen} />
+            <SelectInput selectItem={authorOptions} optionName={'Author'} setSelectedValue={setSelectedValue} setOpen={setOpen} />
+            {!isOpen ?
+                <Button variant="primary" onClick={filterClearButton}>Clear</Button>
+                :
+                < Button variant="primary" onClick={showFavsButton}>Show Favs</Button>
+
+            }
+        </div >
+
     );
 };
 

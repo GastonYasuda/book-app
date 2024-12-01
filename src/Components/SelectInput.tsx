@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { Author } from "../typeInterface/BookTypes";
 
@@ -6,6 +6,7 @@ type filterAsideProps = {
     setSelectedValue: (value: SelectedValueProp | undefined) => void; // Ahora acepta un objeto o undefined
     selectItem: string[] | number[] | Author[];
     optionName: string;
+    setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 type SelectedValueProp = {
@@ -15,7 +16,7 @@ type SelectedValueProp = {
 
 
 
-const SelectInput = ({ selectItem, optionName, setSelectedValue }: filterAsideProps) => {
+const SelectInput = ({ selectItem, optionName, setSelectedValue, setOpen }: filterAsideProps) => {
     const [selectedOption, setSelectedOption] = useState<string>("");
 
     useEffect(() => {
@@ -34,6 +35,7 @@ const SelectInput = ({ selectItem, optionName, setSelectedValue }: filterAsidePr
 
         // Resetea el valor del select a su opción inicial
         setSelectedOption(""); // Vuelve a mostrar la opción predeterminada
+        setOpen(false)
     };
 
     return (

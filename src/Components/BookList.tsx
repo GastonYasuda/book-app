@@ -10,12 +10,16 @@ import BookResult from "./BookResult";
 import BookDetail from "./BookDetail";
 import { ToastContainer } from "react-toastify";
 
+
 type SelectedValueProp = {
     OptionName: string;
     Selected: string | number | Author;
 }
 
 const BookList = () => {
+    const [isOpen, setOpen] = useState(false)
+    const [showMobileFavs, setShowMobileFavs] = useState(false)
+
 
     const { bookList } = useContext(BookContext) as bookContextType
 
@@ -31,11 +35,7 @@ const BookList = () => {
 
 
     useEffect(() => {
-        //    console.log(selectedValue);
-
         localStorage.setItem("BookFavArray", JSON.stringify(favorites));
-
-
     }, [favorites, result, selectedValue])
 
 
@@ -43,11 +43,11 @@ const BookList = () => {
     return (
         <BookContexProvider>
             <div className="main">
-                <AppHeader setSelectedValue={setSelectedValue} />
+                <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
 
                 <div className="main_container">
 
-                    <FilterAside setSelectedValue={setSelectedValue} />
+                    <FilterAside setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
 
                     <div className="bookList_container">
 
@@ -78,7 +78,7 @@ const BookList = () => {
                             }
                         </div>
 
-                        <FavoriteBooks favorites={favorites} setFavorites={setFavorites} />
+                        <FavoriteBooks favorites={favorites} setFavorites={setFavorites} showMobileFavs={showMobileFavs} setShowMobileFavs={setShowMobileFavs} />
                     </div>
 
                 </div>

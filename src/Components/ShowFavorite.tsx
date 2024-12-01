@@ -2,15 +2,18 @@ import { Book } from "../typeInterface/BookTypes";
 import favImg from '../assets/fav.png';
 import { Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
+import closeButton from '../assets/close-button.png';
+import Button from 'react-bootstrap/Button';
 
 
 
 interface EachBookProps {
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
+    setShowMobileFavs: Dispatch<SetStateAction<boolean>>
 }
 
-const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
+const ShowFavorite = ({ favorites, setFavorites, setShowMobileFavs }: EachBookProps) => {
 
     const removeNotify = (title: string) => {
         toast.warn(`${title} Removed from Favs!`, {
@@ -25,7 +28,6 @@ const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
     };
 
     const remove = (title: string) => {
-        console.log('quit');
         const removed = favorites?.filter((fav) => fav.title !== title);
         setFavorites(removed);
         removeNotify(title)
@@ -33,6 +35,9 @@ const ShowFavorite = ({ favorites, setFavorites }: EachBookProps) => {
 
     return (
         <div >
+            <Button variant="primary" onClick={() => { setShowMobileFavs(false) }} className="closeButtonStyle">
+                <img src={closeButton} alt="" />
+            </Button>
             {Array.isArray(favorites) && favorites.map((favBook, i) => (
                 <div key={i} className="showFavorite_container">
                     <button onClick={() => remove(favBook.title)} className="favButton">
