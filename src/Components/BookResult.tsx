@@ -12,7 +12,7 @@ type bookResult = {
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
     setShowBookDetail: (value: boolean) => void;
-    setSelectedValue: (value: boolean | undefined) => void;
+    setSelectedValue: Dispatch<SetStateAction<selectedValueProp | undefined>>; // Ahora acepta un objeto o undefined
     selectedValue: selectedValueProp;
 }
 
@@ -48,7 +48,7 @@ const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites,
                 })}
             </div>
 
-            <Button variant="primary" className="detailCard_container-button" onClick={() => { setSelectedValue(false) }}>Back</Button>
+            <Button variant="primary" className="detailCard_container-button" onClick={() => { setSelectedValue(undefined) }}>Back</Button>
 
         </div>
     )
