@@ -245,7 +245,7 @@
 
     & .detailCard_container-card {
         display: flex;
-        margin-left: 70px;
+        margin: 10px;
 
         & .detailCard_container-card-detail {
             display: flex;
@@ -263,9 +263,23 @@
                 display: flex;
                 flex-direction: column;
                 margin-left: 15px;
+                width: 60%;
+
             }
         }
     }
+}
+
+.bookResult_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+
+    & .detailCard_container-button {
+        margin: 15px;
+    }
+
 }
 
 .showFavorite_container {

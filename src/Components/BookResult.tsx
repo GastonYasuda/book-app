@@ -2,6 +2,8 @@ import { Dispatch, SetStateAction, useContext, useEffect } from "react";
 import BookContext from "../Context/BookContext";
 import { Author, Book, bookContextType } from "../typeInterface/BookTypes";
 import EachBook from "./EachBook";
+import Button from 'react-bootstrap/Button';
+
 
 type bookResult = {
     // selectedValue: Book[];
@@ -32,7 +34,8 @@ const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites,
     }, [bookList, selectedValue.Selected, setResult])
 
     return (
-        <div>
+        <div className="bookResult_container">
+
             {selectedValue !== undefined &&
                 <h3 className="genreStyle-h3">{`${selectedValue.OptionName}: ${selectedValue.Selected}`}</h3>
             }
@@ -45,6 +48,7 @@ const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites,
                 })}
             </div>
 
+            <Button variant="primary" className="detailCard_container-button" onClick={() => { setSelectedValue(false) }}>Back</Button>
 
         </div>
     )
