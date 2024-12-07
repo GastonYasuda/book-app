@@ -133,6 +133,7 @@
     border-radius: 5px;
     padding: 10px;
     margin: 20px 15px;
+    width: 320px;
 
 
     & .closeButtonStyle {
@@ -410,7 +411,7 @@
     .bookList_container-favorites {
         position: absolute;
         z-index: 150;
-        right: -270px;
+        right: -470px;
         transition: all 0.5s ease-in-out;
 
         .favoritesBookHeader {
@@ -433,7 +434,7 @@
     }
 
     .showFav {
-        translate: -245px;
+        translate: -470px;
     }
 
     .card-body {

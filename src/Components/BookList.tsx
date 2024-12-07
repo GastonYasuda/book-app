@@ -14,6 +14,7 @@ import Footer from "./Footer";
 import goTop from '../assets/subir.svg';
 import bgImg from '../assets/paralax_flechas.svg';
 import bgImg2 from '../assets/paralax_cuadrados.svg';
+import RecommendBooks from "./RecomendBooks";
 
 type SelectedValueProp = {
     OptionName: string;
@@ -40,6 +41,7 @@ const BookList = () => {
     return (
         <BookContexProvider>
             <StickyContainer>
+                <RecommendBooks />
 
                 <div className="main" id="top">
                     <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
