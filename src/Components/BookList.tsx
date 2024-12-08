@@ -22,9 +22,10 @@ type SelectedValueProp = {
 }
 
 const BookList = () => {
+    const { bookList } = useContext(BookContext) as bookContextType
+
     const [isOpen, setOpen] = useState(false)
     const [showMobileFavs, setShowMobileFavs] = useState(false)
-    const { bookList } = useContext(BookContext) as bookContextType
     const [favorites, setFavorites] = useState<Book[]>(() => {
         // Recuperar favoritos del localStorage al cargar la página
         const storedFavs = JSON.parse(localStorage.getItem('BookFavArray') || '[]');
@@ -34,14 +35,16 @@ const BookList = () => {
     const [selectedValue, setSelectedValue] = useState<SelectedValueProp | undefined>();
     const [showBookDetail, setShowBookDetail] = useState<boolean>()
 
+
     useEffect(() => {
         localStorage.setItem("BookFavArray", JSON.stringify(favorites));
+
     }, [favorites, result, selectedValue])
 
     return (
         <BookContexProvider>
             <StickyContainer>
-                <RecommendBooks />
+                <RecommendBooks favorites={favorites} showBookDetail={showBookDetail} setShowBookDetail={setShowBookDetail} />
 
                 <div className="main" id="top">
                     <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
@@ -63,22 +66,33 @@ const BookList = () => {
                                 </div>
 
                                 <div className="backgroundImg"><img src={bgImg} alt="Bg Image" /></div>
+
+
+
+
+
+
+
+
+
+
+
                                 <div className="bookList_container-counterBooks-body">
 
                                     {selectedValue?.OptionName !== undefined ?
                                         <BookResult selectedValue={selectedValue} result={result} setResult={setResult} favorites={favorites}
-                                            setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />
+                                            setFavorites={setFavorites} setSelectedValue={setSelectedValue} />
                                         :
                                         <>
                                             {showBookDetail ?
-                                                <BookDetail setShowBookDetail={setShowBookDetail} favorites={favorites}
-                                                    setFavorites={setFavorites} />
+                                                <BookDetail favorites={favorites}
+                                                    setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} />
                                                 :
                                                 <div className="bookList_container-book">
                                                     {bookList.map((boo, index) => {
                                                         return (
                                                             <EachBook key={index} boo={boo} favorites={favorites}
-                                                                setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />);
+                                                                setFavorites={setFavorites} setSelectedValue={setSelectedValue} setShowBookDetail={setShowBookDetail} />);
                                                     })}
                                                 </div>
                                             }
@@ -87,7 +101,12 @@ const BookList = () => {
                                 </div>
                                 <div className="backgroundImg2"><img src={bgImg2} alt="Bg Image2" /></div>
                             </div>
-                            <FavoriteBooks favorites={favorites} setFavorites={setFavorites} showMobileFavs={showMobileFavs} setShowMobileFavs={setShowMobileFavs} />
+
+
+
+
+
+                            <FavoriteBooks favorites={favorites} setFavorites={setFavorites} showMobileFavs={showMobileFavs} setShowMobileFavs={setShowMobileFavs} setShowBookDetail={setShowBookDetail} />
                         </div>
                     </div>
                     <div className="gotTopArrow">

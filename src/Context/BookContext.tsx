@@ -13,7 +13,8 @@ export function BookContexProvider({ children }: Props) {
     // Cambia el tipo de estado a Book[]
     const [bookList, setBookList] = useState<Book[]>([]);
     const [favArray, setFavArray] = useState<string[]>([]);
-    const [forBookDetail, setForBookDetail] = useState<Book[]>()
+    const [forBookDetail, setForBookDetail] = useState<Book[]>();
+
 
 
 
@@ -22,6 +23,7 @@ export function BookContexProvider({ children }: Props) {
     useEffect(() => {
         const books = library.map((item) => item.book); // Extrae todos los libros del JSON
         setBookList(books); // Actualiza el estado con los libros
+
     }, []);
 
 

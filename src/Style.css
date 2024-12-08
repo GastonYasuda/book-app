@@ -314,6 +314,11 @@
             margin-left: 5px;
             width: 50% !important;
             font-size: 11px !important;
+
+        }
+
+        & p {
+            color: #ba2e2e;
         }
     }
 }

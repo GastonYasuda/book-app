@@ -9,8 +9,10 @@ interface EachBookProps {
     setFavorites: Dispatch<SetStateAction<Book[]>>;
     showMobileFavs: boolean;
     setShowMobileFavs: Dispatch<SetStateAction<boolean>>;
+    setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
+
 }
-const FavoriteBooks = ({ favorites, setFavorites, showMobileFavs, setShowMobileFavs }: EachBookProps) => {
+const FavoriteBooks = ({ favorites, setFavorites, showMobileFavs, setShowMobileFavs, setShowBookDetail }: EachBookProps) => {
 
     return (
         <div className={`bookList_container-favorites ${showMobileFavs ? 'showFav' : ''}`}>
@@ -22,7 +24,7 @@ const FavoriteBooks = ({ favorites, setFavorites, showMobileFavs, setShowMobileF
             </div>
             {favorites.length === 0 ?
                 <h4>You don't have favorite books</h4>
-                : <ShowFavorite favorites={favorites} setFavorites={setFavorites} setShowMobileFavs={setShowMobileFavs} />
+                : <ShowFavorite favorites={favorites} setFavorites={setFavorites} setShowMobileFavs={setShowMobileFavs} wichComponent={''} setShowBookDetail={setShowBookDetail} />
             }
         </div>
     );

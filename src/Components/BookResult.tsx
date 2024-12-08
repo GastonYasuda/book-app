@@ -10,7 +10,6 @@ type bookResult = {
     setResult: Dispatch<SetStateAction<Book[]>>;
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
-    setShowBookDetail: (value: boolean) => void;
     setSelectedValue: Dispatch<SetStateAction<selectedValueProp | undefined>>; // Ahora acepta un objeto o undefined
     selectedValue: selectedValueProp;
 }
@@ -20,7 +19,7 @@ type selectedValueProp = {
     Selected: string | number | Author;
 }
 
-const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites, setShowBookDetail, setSelectedValue }: bookResult) => {
+const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites, setSelectedValue }: bookResult) => {
     const { bookList } = useContext(BookContext) as bookContextType
 
     useEffect(() => {
@@ -41,7 +40,7 @@ const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites,
                 {result.map((boo, index) => {
                     return (
                         <EachBook key={index} boo={boo} favorites={favorites}
-                            setFavorites={setFavorites} setShowBookDetail={setShowBookDetail} setSelectedValue={setSelectedValue} />);
+                            setFavorites={setFavorites} setSelectedValue={setSelectedValue} />);
                 })}
             </div>
 

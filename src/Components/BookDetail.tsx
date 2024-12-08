@@ -5,12 +5,12 @@ import Button from 'react-bootstrap/Button';
 import FavMark from "./FavMark";
 
 type BookDetailProps = {
-    setShowBookDetail: (value: boolean) => void;
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
+    setShowBookDetail: (value: boolean) => void;
 }
 
-const BookDetail = ({ setShowBookDetail, favorites, setFavorites }: BookDetailProps) => {
+const BookDetail = ({ favorites, setFavorites, setShowBookDetail }: BookDetailProps) => {
     const { bookList, forBookDetail } = useContext(BookContext) as bookContextType
 
     const [selectBook, setSelectBook] = useState<Book[]>()

@@ -8,17 +8,19 @@ interface EachBookProps {
     boo: Book;
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
-    setShowBookDetail: (value: boolean) => void;
     setSelectedValue: (value: undefined) => void;
+    setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
 }
 
-const EachBook = ({ boo, favorites, setFavorites, setShowBookDetail, setSelectedValue }: EachBookProps) => {
+const EachBook = ({ boo, favorites, setFavorites, setSelectedValue, setShowBookDetail }: EachBookProps) => {
     const { setForBookDetail } = useContext(BookContext) as bookContextType
 
     const test = () => {
         setSelectedValue(undefined)
         setShowBookDetail(true)
         setForBookDetail(boo.ISBN)
+        console.log('hello');
+
     }
 
     return (
