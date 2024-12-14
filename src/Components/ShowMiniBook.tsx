@@ -14,7 +14,7 @@ interface EachBookProps {
     recommendBooksArray?: Book[]
 }
 
-const ShowFavorite = ({ recommendBooksArray, favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
+const ShowMiniBook = ({ recommendBooksArray, favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
 
     const [showStateFrom, setshowStateFrom] = useState<Book[] | undefined>([]);
 
@@ -56,10 +56,13 @@ const ShowFavorite = ({ recommendBooksArray, favorites, setFavorites, setShowBoo
     return (
         <div >
             {Array.isArray(showStateFrom) && showStateFrom.map((favBook, i) => (
-                <div key={i} className="showFavorite_container">
-                    <button onClick={() => remove(favBook.title)} className="favButton">
-                        <img src={favImg} alt="fav" />
-                    </button>
+                <div key={i} className="ShowMiniBook_container">
+                    {showFrom === 'favorites' ?
+                        <button onClick={() => remove(favBook.title)} className="favButton">
+                            <img src={favImg} alt="fav" />
+                        </button>
+                        : ''
+                    }
                     <div key={i} className="favBookSection" onClick={() => { goToDetail(favBook.ISBN) }}>
                         <img src={favBook.cover} className="favBookSection_img" />
                         <h5 className="favBookSection_title">{favBook.title}</h5>
@@ -71,4 +74,4 @@ const ShowFavorite = ({ recommendBooksArray, favorites, setFavorites, setShowBoo
     );
 };
 
-export default ShowFavorite;
+export default ShowMiniBook;

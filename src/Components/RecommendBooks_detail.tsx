@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { Book, bookContextType } from "../typeInterface/BookTypes";
 import BookContext from "../Context/BookContext";
-import ShowFavorite from "./ShowFavorite";
+import ShowMiniBook from "./ShowMiniBook";
 
 type RecommendBooks_detailProps = {
     genreCount: string[];
@@ -53,7 +53,7 @@ const RecommendBooks_detail = ({ genreCount, favorites, setShowBookDetail }: Rec
         <div>
             <h1>{genreCount}</h1>
 
-            <ShowFavorite recommendBooksArray={recommendBooksArray} favorites={favorites} setShowBookDetail={setShowBookDetail} showFrom={'recommended'} />
+            <ShowMiniBook recommendBooksArray={recommendBooksArray} favorites={favorites} setShowBookDetail={setShowBookDetail} showFrom={'recommended'} />
         </div >
     )
 };
