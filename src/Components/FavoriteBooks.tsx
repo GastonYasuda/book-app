@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { Book } from "../typeInterface/BookTypes";
-import ShowMiniBook from "./ShowMiniBook";
 import closeButton from '../assets/close-button.png';
 import Button from 'react-bootstrap/Button';
+import ShowMiniBook from "./ShowMiniBook";
 
 interface EachBookProps {
     favorites: Book[];

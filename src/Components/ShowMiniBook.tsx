@@ -7,7 +7,7 @@ import BookContext from "../Context/BookContext";
 
 interface EachBookProps {
     favorites: Book[];
-    setFavorites?: Dispatch<SetStateAction<Book[] | undefined>>;
+    setFavorites?: Dispatch<SetStateAction<Book[]>>;
     setShowMobileFavs?: Dispatch<SetStateAction<boolean>>
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
     showFrom: string;

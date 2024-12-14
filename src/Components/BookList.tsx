@@ -67,16 +67,6 @@ const BookList = () => {
 
                                 <div className="backgroundImg"><img src={bgImg} alt="Bg Image" /></div>
 
-
-
-
-
-
-
-
-
-
-
                                 <div className="bookList_container-counterBooks-body">
 
                                     {selectedValue?.OptionName !== undefined ?
@@ -101,10 +91,6 @@ const BookList = () => {
                                 </div>
                                 <div className="backgroundImg2"><img src={bgImg2} alt="Bg Image2" /></div>
                             </div>
-
-
-
-
 
                             <FavoriteBooks favorites={favorites} setFavorites={setFavorites} showMobileFavs={showMobileFavs} setShowMobileFavs={setShowMobileFavs} setShowBookDetail={setShowBookDetail} />
                         </div>
