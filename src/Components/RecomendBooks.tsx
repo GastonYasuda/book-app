@@ -3,11 +3,8 @@
 
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import RecommendBooks_detail from "./RecommendBooks_detail";
+import { Book } from "../typeInterface/BookTypes";
 
-interface Book {
-    title: string;
-    genre: string;
-}
 
 type RecomendBooksProp = {
     favorites: Book[];
@@ -15,7 +12,7 @@ type RecomendBooksProp = {
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
 }
 
-const RecommendBooks = ({ favorites, showBookDetail, setShowBookDetail }: RecomendBooksProp) => {
+const RecommendBooks = ({ favorites, setShowBookDetail }: RecomendBooksProp) => {
 
     const [genreCount, setGenreCount] = useState<string[]>([]);
 
@@ -54,7 +51,7 @@ const RecommendBooks = ({ favorites, showBookDetail, setShowBookDetail }: Recome
     return (
         <div>
             Recommend
-            <RecommendBooks_detail genreCount={genreCount} favorites={favorites} showBookDetail={showBookDetail} setShowBookDetail={setShowBookDetail} />
+            <RecommendBooks_detail genreCount={genreCount} favorites={favorites} setShowBookDetail={setShowBookDetail} />
         </div>
     );
 };

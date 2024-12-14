@@ -6,9 +6,6 @@ import ShowMiniBook from "./ShowMiniBook";
 type RecommendBooks_detailProps = {
     genreCount: string[];
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[]>>;
-    showMobileFavs: boolean;
-    setShowMobileFavs: Dispatch<SetStateAction<boolean>>;
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
 };
 
