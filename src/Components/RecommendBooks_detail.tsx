@@ -6,18 +6,18 @@ import ShowFavorite from "./ShowFavorite";
 type RecommendBooks_detailProps = {
     genreCount: string[];
     favorites: Book[];
+    setFavorites: Dispatch<SetStateAction<Book[]>>;
+    showMobileFavs: boolean;
+    setShowMobileFavs: Dispatch<SetStateAction<boolean>>;
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
 };
-type recommendBooksArrayProps = {
-    recommendBooksArray: Book[];
-    setRecomendBooksArray: Dispatch<SetStateAction<Book[]>>; // Ajustado aquí
-}
+
 
 const RecommendBooks_detail = ({ genreCount, favorites, setShowBookDetail }: RecommendBooks_detailProps) => {
     const { bookList } = useContext(BookContext) as bookContextType
 
 
-    const [recommendBooksArray, setRecommendBooksArray] = useState<recommendBooksArrayProps[]>([]);
+    const [recommendBooksArray, setRecommendBooksArray] = useState<Book[]>([]);
 
 
     useEffect(() => {
@@ -39,6 +39,7 @@ const RecommendBooks_detail = ({ genreCount, favorites, setShowBookDetail }: Rec
                         if (!prev.some((book) => book.title === notFav.title)) {
                             return [...prev, notFav]; // Solo agregar si no está presente
                         }
+
                         return prev; // Si ya está, no agregar
                     });
                 }
@@ -52,7 +53,7 @@ const RecommendBooks_detail = ({ genreCount, favorites, setShowBookDetail }: Rec
         <div>
             <h1>{genreCount}</h1>
 
-            <ShowFavorite favorites={recommendBooksArray} setFavorites={setRecommendBooksArray} wichComponent={'recommendedBooks'} setShowBookDetail={setShowBookDetail} />
+            <ShowFavorite recommendBooksArray={recommendBooksArray} favorites={favorites} setShowBookDetail={setShowBookDetail} showFrom={'recommended'} />
         </div >
     )
 };

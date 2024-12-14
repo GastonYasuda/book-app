@@ -1,19 +1,31 @@
 import { Book, bookContextType } from "../typeInterface/BookTypes";
 import favImg from '../assets/fav.png';
-import { Dispatch, SetStateAction, useContext } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import BookContext from "../Context/BookContext";
 
 
 interface EachBookProps {
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[]>>;
-    setShowMobileFavs: Dispatch<SetStateAction<boolean>>
-    wichComponent: string;
+    setFavorites?: Dispatch<SetStateAction<Book[] | undefined>>;
+    setShowMobileFavs?: Dispatch<SetStateAction<boolean>>
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
+    showFrom: string;
+    recommendBooksArray?: Book[]
 }
 
-const ShowFavorite = ({ favorites, setFavorites, wichComponent, setShowBookDetail }: EachBookProps) => {
+const ShowFavorite = ({ recommendBooksArray, favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
+
+    const [showStateFrom, setshowStateFrom] = useState<Book[] | undefined>([]);
+
+    useEffect(() => {
+        if (showFrom === 'favorites') {
+            setshowStateFrom(favorites)
+        } else if (showFrom === 'recommended') {
+            setshowStateFrom(recommendBooksArray)
+        }
+
+    }, [recommendBooksArray, favorites, showFrom])
 
     const { setForBookDetail } = useContext(BookContext) as bookContextType
 
@@ -30,9 +42,10 @@ const ShowFavorite = ({ favorites, setFavorites, wichComponent, setShowBookDetai
     };
 
     const remove = (title: string) => {
+        const safeSetFavorites = setFavorites || (() => { });
         const removed = favorites?.filter((fav) => fav.title !== title);
-        setFavorites(removed);
-        removeNotify(title)
+        safeSetFavorites(removed);
+        removeNotify(title);
     }
 
     const goToDetail = (bookISBN: string) => {
@@ -42,13 +55,11 @@ const ShowFavorite = ({ favorites, setFavorites, wichComponent, setShowBookDetai
 
     return (
         <div >
-            {Array.isArray(favorites) && favorites.map((favBook, i) => (
+            {Array.isArray(showStateFrom) && showStateFrom.map((favBook, i) => (
                 <div key={i} className="showFavorite_container">
-                    {wichComponent === 'recommendedBooks' ? '' :
-                        <button onClick={() => remove(favBook.title)} className="favButton">
-                            <img src={favImg} alt="fav" />
-                        </button>
-                    }
+                    <button onClick={() => remove(favBook.title)} className="favButton">
+                        <img src={favImg} alt="fav" />
+                    </button>
                     <div key={i} className="favBookSection" onClick={() => { goToDetail(favBook.ISBN) }}>
                         <img src={favBook.cover} className="favBookSection_img" />
                         <h5 className="favBookSection_title">{favBook.title}</h5>
