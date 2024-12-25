@@ -18,6 +18,7 @@ const RecommendBooks_detail = ({ genreCount, favorites, setShowBookDetail }: Rec
 
 
     useEffect(() => {
+
         setRecommendBooksArray([])
 
         // Primero separamos los libros que no están en 'favorites'
@@ -34,6 +35,7 @@ const RecommendBooks_detail = ({ genreCount, favorites, setShowBookDetail }: Rec
                     //ME ESTA AGREGANDO LOS QUE YA NO SON FAVS TAMBIEN
                     setRecommendBooksArray((prev) => {
                         if (!prev.some((book) => book.title === notFav.title)) {
+
                             return [...prev, notFav]; // Solo agregar si no está presente
                         }
 
@@ -48,8 +50,6 @@ const RecommendBooks_detail = ({ genreCount, favorites, setShowBookDetail }: Rec
 
     return (
         <div>
-            <h1>{genreCount}</h1>
-
             <ShowMiniBook recommendBooksArray={recommendBooksArray} favorites={favorites} setShowBookDetail={setShowBookDetail} showFrom={'recommended'} />
         </div >
     )

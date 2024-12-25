@@ -14,7 +14,7 @@ import Footer from "./Footer";
 import goTop from '../assets/subir.svg';
 import bgImg from '../assets/paralax_flechas.svg';
 import bgImg2 from '../assets/paralax_cuadrados.svg';
-import RecommendBooks from "./RecomendBooks";
+import RecommendBookModal from "./RecommendBookModal";
 
 type SelectedValueProp = {
     OptionName: string;
@@ -34,17 +34,23 @@ const BookList = () => {
     const [result, setResult] = useState<Book[]>([]);
     const [selectedValue, setSelectedValue] = useState<SelectedValueProp | undefined>();
     const [showBookDetail, setShowBookDetail] = useState<boolean>()
+    const [showRecommendedModal, setShowRecommendedPopUp] = useState<boolean>(false);
+
+
+
 
 
     useEffect(() => {
         localStorage.setItem("BookFavArray", JSON.stringify(favorites));
-
-    }, [favorites, result, selectedValue])
+    }, [favorites, result, selectedValue, showRecommendedModal])
 
     return (
         <BookContexProvider>
             <StickyContainer>
-                <RecommendBooks favorites={favorites} showBookDetail={showBookDetail} setShowBookDetail={setShowBookDetail} />
+                {showRecommendedModal && <RecommendBookModal favorites={favorites} showBookDetail={showBookDetail} setShowBookDetail={setShowBookDetail} show={showRecommendedModal} setShowRecommendedPopUp={setShowRecommendedPopUp}
+                    onHide={() => setShowRecommendedPopUp(false)} />}
+
+                {/* <RecommendBooks favorites={favorites} showBookDetail={showBookDetail} setShowBookDetail={setShowBookDetail} /> */}
 
                 <div className="main" id="top">
                     <AppHeader setSelectedValue={setSelectedValue} isOpen={isOpen} setOpen={setOpen} setShowMobileFavs={setShowMobileFavs} />
@@ -59,7 +65,7 @@ const BookList = () => {
                                     <Sticky topOffset={80} className="stickyClass">{({ style }) =>
                                         <div className="stickyClass_container stickyClass" style={style}>
                                             <h1>Book App</h1>
-                                            <CountCards favorites={favorites} setFavorites={setFavorites} setShowMobileFavs={setShowMobileFavs} />
+                                            <CountCards favorites={favorites} setFavorites={setFavorites} setShowMobileFavs={setShowMobileFavs} setShowRecommendedPopUp={setShowRecommendedPopUp} />
                                         </div>}
                                     </Sticky>
 

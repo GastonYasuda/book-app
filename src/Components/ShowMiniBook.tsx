@@ -11,23 +11,29 @@ interface EachBookProps {
     setShowMobileFavs?: Dispatch<SetStateAction<boolean>>
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
     showFrom: string;
-    recommendBooksArray?: Book[]
+    recommendBooksArray?: Book[];
 }
 
 const ShowMiniBook = ({ recommendBooksArray, favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
 
+    const { setRecommendedBookCount, setForBookDetail } = useContext(BookContext) as bookContextType
+
     const [showStateFrom, setshowStateFrom] = useState<Book[] | undefined>([]);
 
     useEffect(() => {
+        // setRecommendedBookCount(0)
+
         if (showFrom === 'favorites') {
             setshowStateFrom(favorites)
-        } else if (showFrom === 'recommended') {
+        } else if (recommendBooksArray && showFrom === 'recommended') {
             setshowStateFrom(recommendBooksArray)
         }
+        if (recommendBooksArray !== undefined && recommendBooksArray.length !== 0) {
+            setRecommendedBookCount(recommendBooksArray.length)
+        }
 
-    }, [recommendBooksArray, favorites, showFrom])
+    }, [setRecommendedBookCount, recommendBooksArray, favorites, showFrom])
 
-    const { setForBookDetail } = useContext(BookContext) as bookContextType
 
     const removeNotify = (title: string) => {
         toast.warn(`${title} Removed from Favs!`, {

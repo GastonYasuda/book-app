@@ -19,8 +19,6 @@ const RecommendBooks = ({ favorites, setShowBookDetail }: RecomendBooksProp) => 
 
     useEffect(() => {
         setGenreCount(getMostRepeatedGenres(favorites) || [])
-
-
     }, [favorites])
 
 
@@ -52,6 +50,7 @@ const RecommendBooks = ({ favorites, setShowBookDetail }: RecomendBooksProp) => 
         <div>
             Recommend
             <RecommendBooks_detail genreCount={genreCount} favorites={favorites} setShowBookDetail={setShowBookDetail} />
+
         </div>
     );
 };

@@ -39,5 +39,8 @@ export type bookContextType={
     setSelectedValue?:()=>void;
     forBookDetail:string;
     setForBookDetail:(value:Book['ISBN'])=>void;
+    recomemendedBookCount:number;
+    setRecommendedBookCount:(value:number)=>void;  
+
 }
 

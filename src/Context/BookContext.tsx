@@ -14,6 +14,9 @@ export function BookContexProvider({ children }: Props) {
     const [bookList, setBookList] = useState<Book[]>([]);
     const [favArray, setFavArray] = useState<string[]>([]);
     const [forBookDetail, setForBookDetail] = useState<Book[]>();
+    const [recomemendedBookCount, setRecommendedBookCount] = useState<number>(0)
+
+
 
 
 
@@ -28,7 +31,7 @@ export function BookContexProvider({ children }: Props) {
 
 
     return (
-        <BookContext.Provider value={{ bookList, setBookList, favArray, setFavArray, forBookDetail, setForBookDetail }}>
+        <BookContext.Provider value={{ bookList, setBookList, favArray, setFavArray, forBookDetail, setForBookDetail, recomemendedBookCount, setRecommendedBookCount }}>
             {children}
         </BookContext.Provider>
     );
