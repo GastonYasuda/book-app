@@ -16,33 +16,33 @@ type RecomendBooksProp = {
 const RecommendBookModal = ({ favorites, setShowBookDetail, onHide, setShowRecommendedPopUp }: RecomendBooksProp) => {
 
 
-    // const [genreCount, setGenreCount] = useState<string[]>([]);
+    const [genreCount, setGenreCount] = useState<string[]>([]);
 
 
-    // useEffect(() => {
-    //     setGenreCount(getMostRepeatedGenres(favorites) || [])
-    // }, [favorites])
+    useEffect(() => {
+        setGenreCount(getMostRepeatedGenres(favorites) || [])
+    }, [favorites])
 
-    // function getMostRepeatedGenres(books: Book[]): string[] | null {
-    //     if (books.length === 0) return null; // Manejo de array vacío
+    function getMostRepeatedGenres(books: Book[]): string[] | null {
+        if (books.length === 0) return null; // Manejo de array vacío
 
-    //     // Contar ocurrencias de géneros usando reduce
-    //     const genreCount = books.reduce<Record<string, number>>((acc, book) => {
-    //         acc[book.genre] = (acc[book.genre] || 0) + 1;
-    //         return acc;
-    //     }, {});
+        // Contar ocurrencias de géneros usando reduce
+        const genreCount = books.reduce<Record<string, number>>((acc, book) => {
+            acc[book.genre] = (acc[book.genre] || 0) + 1;
+            return acc;
+        }, {});
 
-    //     // Encontrar la cantidad máxima de repeticiones
-    //     const maxCount = Math.max(...Object.values(genreCount));
+        // Encontrar la cantidad máxima de repeticiones
+        const maxCount = Math.max(...Object.values(genreCount));
 
-    //     // Filtrar géneros que tienen la cantidad máxima
-    //     const mostRepeatedGenres = Object.entries(genreCount)
-    //         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    //         .filter(([_, count]) => count === maxCount)
-    //         .map(([genre]) => genre);
+        // Filtrar géneros que tienen la cantidad máxima
+        const mostRepeatedGenres = Object.entries(genreCount)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            .filter(([_, count]) => count === maxCount)
+            .map(([genre]) => genre);
 
-    //     return mostRepeatedGenres.length > 0 ? mostRepeatedGenres : null;
-    // }
+        return mostRepeatedGenres.length > 0 ? mostRepeatedGenres : null;
+    }
 
 
 
