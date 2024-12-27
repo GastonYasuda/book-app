@@ -11,14 +11,11 @@ interface EachBookProps {
     recomemendedBookCount: number;
 }
 
-const CountCards = ({ favorites, setShowMobileFavs, setShowRecommendedPopUp }: EachBookProps) => {
+const CountCards = ({ favorites, recommendBooksArray, testCountRecomendados, setShowMobileFavs, setShowRecommendedPopUp }: EachBookProps) => {
 
-    const { bookList, recomemendedBookCount, recommendBooksArray } = useContext(BookContext) as bookContextType
+    const { bookList } = useContext(BookContext) as bookContextType
 
-    useEffect(() => {
-        console.log(recomemendedBookCount);
 
-    }, [favorites, recomemendedBookCount])
 
     return (
         <div className="bookList_container-countCards">
@@ -31,7 +28,7 @@ const CountCards = ({ favorites, setShowMobileFavs, setShowRecommendedPopUp }: E
             <Card style={{ width: '11rem' }} onClick={() => { setShowRecommendedPopUp(true) }}>
                 <Card.Body >
                     <Card.Subtitle className="mb-2 text-muted tituloCount">Reco Books</Card.Subtitle>
-                    <Card.Text className='countCard-p'>{recommendBooksArray.length}</Card.Text>
+                    <Card.Text className='countCard-p'>{testCountRecomendados.length}</Card.Text>
                 </Card.Body>
             </Card>
             <Card style={{ width: '11rem' }} onClick={() => { setShowMobileFavs(true) }}>

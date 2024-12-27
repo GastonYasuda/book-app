@@ -26,9 +26,6 @@ export function BookContexProvider({ children }: Props) {
     const [recommendBooksArray, setRecommendBooksArray] = useState<Book[]>([]);
 
 
-
-
-
     const { library } = bookJson;
 
     useEffect(() => {
@@ -41,7 +38,6 @@ export function BookContexProvider({ children }: Props) {
     }, []);
 
     useEffect(() => {
-        console.log(favorites);
 
         setGenreCount(getMostRepeatedGenres(favorites) || [])
     }, [favorites])
@@ -65,7 +61,7 @@ export function BookContexProvider({ children }: Props) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             .filter(([_, count]) => count === maxCount)
             .map(([genre]) => genre);
-        console.log(mostRepeatedGenres);
+        console.log('recomendados', mostRepeatedGenres);
 
 
         return mostRepeatedGenres.length > 0 ? mostRepeatedGenres : null;
@@ -89,12 +85,12 @@ export function BookContexProvider({ children }: Props) {
                 if (notFav.genre === mostGenre) {
                     // Verificar si el libro ya está en el array
 
-                    //ME ESTA AGREGANDO LOS QUE YA NO SON FAVS TAMBIEN
                     setRecommendBooksArray((prev) => {
                         if (!prev.some((book) => book.title === notFav.title)) {
 
                             return [...prev, notFav]; // Solo agregar si no está presente
                         }
+                        console.log('que recomienda', prev);
 
                         return prev; // Si ya está, no agregar
                     });
@@ -105,9 +101,7 @@ export function BookContexProvider({ children }: Props) {
 
     }, [genreCount, bookList, favorites]); // Asegúrate de que las dependencias sean correctas
 
-    // if (recommendBooksArray !== undefined && recommendBooksArray.length !== 0) {
-    //     setRecommendedBookCount(recommendBooksArray.length)
-    // }
+
 
 
 

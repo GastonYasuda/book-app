@@ -14,9 +14,9 @@ interface EachBookProps {
     recommendBooksArray?: Book[];
 }
 
-const ShowMiniBook = ({ favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
+const ShowMiniBook = ({ recommendBooksArray, favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
 
-    const { setRecommendedBookCount, setForBookDetail, recommendBooksArray } = useContext(BookContext) as bookContextType
+    const { setRecommendedBookCount, setForBookDetail } = useContext(BookContext) as bookContextType
 
     const [showStateFrom, setshowStateFrom] = useState<Book[] | undefined>([]);
 
