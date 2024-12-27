@@ -1,8 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Book } from '../typeInterface/BookTypes';
+import { Book, bookContextType } from '../typeInterface/BookTypes';
 import RecommendBooks_detail from './RecommendBooks_detail';
+import BookContext from '../Context/BookContext';
 
 type RecomendBooksProp = {
     favorites: Book[];
@@ -15,34 +16,35 @@ type RecomendBooksProp = {
 
 const RecommendBookModal = ({ favorites, setShowBookDetail, onHide, setShowRecommendedPopUp }: RecomendBooksProp) => {
 
+    const { genreCount } = useContext(BookContext) as bookContextType
 
-    const [genreCount, setGenreCount] = useState<string[]>([]);
+    // const [genreCount, setGenreCount] = useState<string[]>([]);
 
 
-    useEffect(() => {
-        setGenreCount(getMostRepeatedGenres(favorites) || [])
-    }, [favorites])
+    // useEffect(() => {
+    //     setGenreCount(getMostRepeatedGenres(favorites) || [])
+    // }, [favorites])
 
-    function getMostRepeatedGenres(books: Book[]): string[] | null {
-        if (books.length === 0) return null; // Manejo de array vacío
+    // function getMostRepeatedGenres(books: Book[]): string[] | null {
+    //     if (books.length === 0) return null; // Manejo de array vacío
 
-        // Contar ocurrencias de géneros usando reduce
-        const genreCount = books.reduce<Record<string, number>>((acc, book) => {
-            acc[book.genre] = (acc[book.genre] || 0) + 1;
-            return acc;
-        }, {});
+    //     // Contar ocurrencias de géneros usando reduce
+    //     const genreCount = books.reduce<Record<string, number>>((acc, book) => {
+    //         acc[book.genre] = (acc[book.genre] || 0) + 1;
+    //         return acc;
+    //     }, {});
 
-        // Encontrar la cantidad máxima de repeticiones
-        const maxCount = Math.max(...Object.values(genreCount));
+    //     // Encontrar la cantidad máxima de repeticiones
+    //     const maxCount = Math.max(...Object.values(genreCount));
 
-        // Filtrar géneros que tienen la cantidad máxima
-        const mostRepeatedGenres = Object.entries(genreCount)
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            .filter(([_, count]) => count === maxCount)
-            .map(([genre]) => genre);
+    //     // Filtrar géneros que tienen la cantidad máxima
+    //     const mostRepeatedGenres = Object.entries(genreCount)
+    //         // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    //         .filter(([_, count]) => count === maxCount)
+    //         .map(([genre]) => genre);
 
-        return mostRepeatedGenres.length > 0 ? mostRepeatedGenres : null;
-    }
+    //     return mostRepeatedGenres.length > 0 ? mostRepeatedGenres : null;
+    // }
 
 
 
@@ -60,7 +62,7 @@ const RecommendBookModal = ({ favorites, setShowBookDetail, onHide, setShowRecom
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body onClick={onHide}>
-                <RecommendBooks_detail genreCount={genreCount} favorites={favorites} setShowBookDetail={setShowBookDetail} />
+                <RecommendBooks_detail genreCount={genreCount} setShowBookDetail={setShowBookDetail} />
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={onHide}>Close</Button>

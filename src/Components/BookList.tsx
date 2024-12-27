@@ -22,15 +22,16 @@ type SelectedValueProp = {
 }
 
 const BookList = () => {
-    const { bookList } = useContext(BookContext) as bookContextType
+
+    const { bookList, favorites, setFavorites } = useContext(BookContext) as bookContextType
 
     const [isOpen, setOpen] = useState(false)
     const [showMobileFavs, setShowMobileFavs] = useState(false)
-    const [favorites, setFavorites] = useState<Book[]>(() => {
-        // Recuperar favoritos del localStorage al cargar la página
-        const storedFavs = JSON.parse(localStorage.getItem('BookFavArray') || '[]');
-        return storedFavs;
-    });
+    // const [favorites, setFavorites] = useState<Book[]>(() => {
+    //     // Recuperar favoritos del localStorage al cargar la página
+    //     const storedFavs = JSON.parse(localStorage.getItem('BookFavArray') || '[]');
+    //     return storedFavs;
+    // });
     const [result, setResult] = useState<Book[]>([]);
     const [selectedValue, setSelectedValue] = useState<SelectedValueProp | undefined>();
     const [showBookDetail, setShowBookDetail] = useState<boolean>()
