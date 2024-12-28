@@ -12,20 +12,21 @@ interface EachBookProps {
     showFrom: string;
 }
 
-const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, showFrom }: EachBookProps) => {
+const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, setFavorites, showFrom }: EachBookProps) => {
 
-    const { setForBookDetail, setFavorites } = useContext(BookContext) as bookContextType
+    const { setForBookDetail } = useContext(BookContext) as bookContextType
 
     const [showStateFrom, setshowStateFrom] = useState<Book[] | undefined>([]);
 
     useEffect(() => {
+
         if (showFrom === 'favorites') {
             setshowStateFrom(favorites)
         } else if (recommendBooksArray && showFrom === 'recommended') {
             setshowStateFrom(recommendBooksArray)
         }
 
-    }, [recommendBooksArray, favorites, showFrom])
+    }, [recommendBooksArray, favorites, showFrom, showStateFrom])
 
 
     const removeNotify = (title: string) => {
@@ -41,11 +42,26 @@ const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, showF
     };
 
     const remove = (title: string) => {
+
         const safeSetFavorites = setFavorites || (() => { });
         const removed = favorites?.filter((fav) => fav.title !== title);
         safeSetFavorites(removed);
         removeNotify(title);
     }
+
+
+    // const AddFav = (bookClick: any) => {
+    //     if (fav) {
+    //         // If is Fav, remove from array
+    //         setFavorites((prev) => prev.filter((book) => book.ISBN !== bookClick.ISBN));
+    //         setFav(false);
+    //         removeNotify()
+    //     } else {
+    //         setFavorites((prev) => [...prev, bookClick]);
+    //         setFav(true);
+    //         addNotify()
+    //     }
+    // };
 
     const goToDetail = (bookISBN: string) => {
         setShowBookDetail(true);
@@ -60,6 +76,10 @@ const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, showF
                         <button onClick={() => remove(favBook.title)} className="favButton">
                             <img src={favImg} alt="fav" />
                         </button>
+                        // <button onClick={() => AddFav(favBook.ISBN)} className="favButton">
+                        //     <img src={favImg} alt="fav" />
+                        // </button>
+
                         : ''
                     }
                     <div key={i} className="favBookSection" onClick={() => { goToDetail(favBook.ISBN) }}>

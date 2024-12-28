@@ -12,7 +12,6 @@ interface Props {
 export function BookContexProvider({ children }: Props) {
 
     const [bookList, setBookList] = useState<Book[]>([]);
-    const [favArray, setFavArray] = useState<string[]>([]);
     const [forBookDetail, setForBookDetail] = useState<Book[]>();
     const [recomemendedBookCount, setRecommendedBookCount] = useState<number>(0)
     const [genreCount, setGenreCount] = useState<string[]>([]);
@@ -35,7 +34,6 @@ export function BookContexProvider({ children }: Props) {
     }, [favorites]);
 
     useEffect(() => {
-
         setRecommendBooksArray([])
 
         // Separate not fav books
@@ -83,7 +81,7 @@ export function BookContexProvider({ children }: Props) {
     }
 
     return (
-        <BookContext.Provider value={{ bookList, setBookList, favArray, setFavArray, forBookDetail, setForBookDetail, recomemendedBookCount, setRecommendedBookCount, genreCount, setGenreCount, favorites, setFavorites, recommendBooksArray }}>
+        <BookContext.Provider value={{ bookList, setBookList, forBookDetail, setForBookDetail, recomemendedBookCount, setRecommendedBookCount, genreCount, setGenreCount, favorites, setFavorites, recommendBooksArray }}>
             {children}
         </BookContext.Provider>
     );

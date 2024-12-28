@@ -28,7 +28,6 @@ export type bookContextType={
     bookList: Book[],
     setBookList:(value:Book[])=>void,
     favArray:Book[],
-    setFavArray: Dispatch<SetStateAction<Book[]>> ,
     forBookDetail:string;
     setForBookDetail:(value:Book['ISBN'])=>void;
     recomemendedBookCount:number;

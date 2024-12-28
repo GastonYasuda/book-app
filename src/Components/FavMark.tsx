@@ -18,7 +18,6 @@ const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
     useEffect(() => {
         const isFavorite = favorites.some((book) => book.ISBN === boo.ISBN);
         setFav(isFavorite);
-
     }, [boo.ISBN, favorites]);
 
     const addNotify = () => {
@@ -44,26 +43,18 @@ const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
         });
     };
 
-
-
     const AddFav = (bookClick: Book) => {
         if (fav) {
-
-            // Si ya es favorito, quitarlo del array
+            // If is Fav, remove from array
             setFavorites((prev) => prev.filter((book) => book.ISBN !== bookClick.ISBN));
             setFav(false);
             removeNotify()
-
-
         } else {
-            // Si no es favorito, agregarlo al array
             setFavorites((prev) => [...prev, bookClick]);
             setFav(true);
             addNotify()
-
         }
     };
-
 
     return (
         <>

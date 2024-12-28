@@ -30,10 +30,6 @@ const BookList = () => {
     const [showBookDetail, setShowBookDetail] = useState<boolean>()
     const [showRecommendedModal, setShowRecommendedPopUp] = useState<boolean>(false);
 
-    useEffect(() => {
-        localStorage.setItem("BookFavArray", JSON.stringify(favorites));
-    }, [favorites, result, selectedValue, showRecommendedModal, recommendBooksArray])
-
     return (
         <BookContexProvider>
             {showRecommendedModal &&
@@ -104,7 +100,8 @@ const BookList = () => {
                             favorites={favorites}
                             showMobileFavs={showMobileFavs}
                             setShowMobileFavs={setShowMobileFavs}
-                            setShowBookDetail={setShowBookDetail} />
+                            setShowBookDetail={setShowBookDetail}
+                            setFavorites={setFavorites} />
                     </div>
                 </div>
                 <div className="gotTopArrow">
