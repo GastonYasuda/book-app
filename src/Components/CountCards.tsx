@@ -1,17 +1,18 @@
 import Card from 'react-bootstrap/Card';
 import { Book, bookContextType } from '../typeInterface/BookTypes';
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import BookContext from '../Context/BookContext';
 
 interface EachBookProps {
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[]>>;
-    setShowMobileFavs: Dispatch<SetStateAction<boolean>>
-    setShowRecommendedPopUp: Dispatch<SetStateAction<boolean>>
-    recomemendedBookCount: number;
+    setFavorites?: Dispatch<SetStateAction<Book[]>>;
+    setShowMobileFavs: Dispatch<SetStateAction<boolean>>;
+    setShowRecommendedPopUp: Dispatch<SetStateAction<boolean>>;
+    recomemendedBookCount?: number;
+    recommendsCount: Book[];
 }
 
-const CountCards = ({ favorites, recommendBooksArray, testCountRecomendados, setShowMobileFavs, setShowRecommendedPopUp }: EachBookProps) => {
+const CountCards = ({ favorites, recommendsCount, setShowMobileFavs, setShowRecommendedPopUp }: EachBookProps) => {
 
     const { bookList } = useContext(BookContext) as bookContextType
 
@@ -28,7 +29,7 @@ const CountCards = ({ favorites, recommendBooksArray, testCountRecomendados, set
             <Card style={{ width: '11rem' }} onClick={() => { setShowRecommendedPopUp(true) }}>
                 <Card.Body >
                     <Card.Subtitle className="mb-2 text-muted tituloCount">Reco Books</Card.Subtitle>
-                    <Card.Text className='countCard-p'>{testCountRecomendados.length}</Card.Text>
+                    <Card.Text className='countCard-p'>{recommendsCount.length}</Card.Text>
                 </Card.Body>
             </Card>
             <Card style={{ width: '11rem' }} onClick={() => { setShowMobileFavs(true) }}>

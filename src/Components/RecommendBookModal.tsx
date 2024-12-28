@@ -1,8 +1,7 @@
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Book, bookContextType } from '../typeInterface/BookTypes';
-import RecommendBooks_detail from './RecommendBooks_detail';
 import BookContext from '../Context/BookContext';
 import ShowMiniBook from './ShowMiniBook';
 
@@ -12,18 +11,10 @@ type RecomendBooksProp = {
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
     show: true; onHide: () => void;
     setShowRecommendedPopUp: Dispatch<SetStateAction<boolean>>;
-
+    recommendBooksArray: Book[];
 }
 
 const RecommendBookModal = ({ recommendBooksArray, setShowBookDetail, onHide, setShowRecommendedPopUp }: RecomendBooksProp) => {
-
-    const { favorites } = useContext(BookContext) as bookContextType
-
-    useEffect(() => {
-        console.log('reco', recommendBooksArray);
-
-    }, [recommendBooksArray, favorites])
-
 
 
     return (
@@ -36,12 +27,13 @@ const RecommendBookModal = ({ recommendBooksArray, setShowBookDetail, onHide, se
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+                    Recommended Books
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body onClick={onHide}>
-                {/* <RecommendBooks_detail genreCount={recommendBooksArray} setShowBookDetail={setShowBookDetail} /> */}
-                <ShowMiniBook recommendBooksArray={recommendBooksArray} setShowBookDetail={setShowBookDetail} showFrom={'recommended'} />
+                {recommendBooksArray.length !== 0 ?
+                    <ShowMiniBook recommendBooksArray={recommendBooksArray} setShowBookDetail={setShowBookDetail} showFrom={'recommended'} />
+                    : <h4>Without recommended book</h4>}
 
             </Modal.Body>
             <Modal.Footer>

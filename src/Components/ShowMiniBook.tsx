@@ -6,8 +6,8 @@ import BookContext from "../Context/BookContext";
 
 
 interface EachBookProps {
-    favorites: Book[];
-    setFavorites?: Dispatch<SetStateAction<Book[]>>;
+    favorites?: Book[];
+    setFavorites?: Dispatch<SetStateAction<Book[]> | undefined>;
     setShowMobileFavs?: Dispatch<SetStateAction<boolean>>
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
     showFrom: string;
@@ -16,23 +16,19 @@ interface EachBookProps {
 
 const ShowMiniBook = ({ recommendBooksArray, favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
 
-    const { setRecommendedBookCount, setForBookDetail } = useContext(BookContext) as bookContextType
+    const { setForBookDetail } = useContext(BookContext) as bookContextType
 
     const [showStateFrom, setshowStateFrom] = useState<Book[] | undefined>([]);
 
     useEffect(() => {
-        // setRecommendedBookCount(0)
 
         if (showFrom === 'favorites') {
             setshowStateFrom(favorites)
         } else if (recommendBooksArray && showFrom === 'recommended') {
             setshowStateFrom(recommendBooksArray)
         }
-        // if (recommendBooksArray !== undefined && recommendBooksArray.length !== 0) {
-        //     setRecommendedBookCount(recommendBooksArray.length)
-        // }
 
-    }, [setRecommendedBookCount, recommendBooksArray, favorites, showFrom])
+    }, [recommendBooksArray, favorites, showFrom])
 
 
     const removeNotify = (title: string) => {

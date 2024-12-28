@@ -26,7 +26,7 @@ export type Library = {
 
 
 export type bookContextType={
-     bookList: Book[],
+    bookList: Book[],
     setBookList:(value:Book[])=>void,
     favArray:Book[],
     setFavArray: Dispatch<SetStateAction<Book[]>> ,
@@ -41,6 +41,8 @@ export type bookContextType={
     setForBookDetail:(value:Book['ISBN'])=>void;
     recomemendedBookCount:number;
     setRecommendedBookCount:(value:number)=>void;  
-
+    favorites:Book[];
+    setFavorites:Dispatch<SetStateAction<Book[]>>
+    recommendBooksArray:Book[];
 }
 
