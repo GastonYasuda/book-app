@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 type FavMarkProps = {
     boo: Book;
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[]>>; // Ajustado aquí
+    setFavorites: Dispatch<SetStateAction<Book[]> | undefined>;
 };
 
 const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {

@@ -9,7 +9,7 @@ type bookResult = {
     result: Book[];
     setResult: Dispatch<SetStateAction<Book[]>>;
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[]>>;
+    setFavorites: Dispatch<SetStateAction<Book[] | undefined>>;
     setSelectedValue: Dispatch<SetStateAction<selectedValueProp | undefined>>;
     setShowBookDetail: (value: boolean) => void;
 }

@@ -10,6 +10,7 @@ interface EachBookProps {
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
     favorites?: Book[] | undefined;
     showFrom: string;
+    setFavorites: Dispatch<SetStateAction<Book[] | undefined>>;
 }
 
 const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, setFavorites, showFrom }: EachBookProps) => {
@@ -42,26 +43,11 @@ const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, setFa
     };
 
     const remove = (title: string) => {
-
         const safeSetFavorites = setFavorites || (() => { });
         const removed = favorites?.filter((fav) => fav.title !== title);
         safeSetFavorites(removed);
         removeNotify(title);
     }
-
-
-    // const AddFav = (bookClick: any) => {
-    //     if (fav) {
-    //         // If is Fav, remove from array
-    //         setFavorites((prev) => prev.filter((book) => book.ISBN !== bookClick.ISBN));
-    //         setFav(false);
-    //         removeNotify()
-    //     } else {
-    //         setFavorites((prev) => [...prev, bookClick]);
-    //         setFav(true);
-    //         addNotify()
-    //     }
-    // };
 
     const goToDetail = (bookISBN: string) => {
         setShowBookDetail(true);
@@ -76,10 +62,6 @@ const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, setFa
                         <button onClick={() => remove(favBook.title)} className="favButton">
                             <img src={favImg} alt="fav" />
                         </button>
-                        // <button onClick={() => AddFav(favBook.ISBN)} className="favButton">
-                        //     <img src={favImg} alt="fav" />
-                        // </button>
-
                         : ''
                     }
                     <div key={i} className="favBookSection" onClick={() => { goToDetail(favBook.ISBN) }}>
