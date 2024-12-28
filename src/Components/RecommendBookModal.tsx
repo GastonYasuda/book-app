@@ -9,9 +9,10 @@ type RecomendBooksProp = {
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
     setShowRecommendedPopUp: Dispatch<SetStateAction<boolean>>;
     onHide: () => void;
+    setFavorites: Dispatch<SetStateAction<Book[]>>;
 }
 
-const RecommendBookModal = ({ recommendBooksArray, setShowBookDetail, setShowRecommendedPopUp, onHide }: RecomendBooksProp) => {
+const RecommendBookModal = ({ recommendBooksArray, setShowBookDetail, setShowRecommendedPopUp, onHide, setFavorites }: RecomendBooksProp) => {
 
 
     return (
@@ -32,7 +33,8 @@ const RecommendBookModal = ({ recommendBooksArray, setShowBookDetail, setShowRec
                     <ShowMiniBook
                         recommendBooksArray={recommendBooksArray}
                         setShowBookDetail={setShowBookDetail}
-                        showFrom={'recommended'} />
+                        showFrom={'recommended'}
+                        setFavorites={setFavorites} />
                     : <h4>Without recommended book</h4>}
 
             </Modal.Body>

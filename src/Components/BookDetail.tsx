@@ -6,7 +6,7 @@ import FavMark from "./FavMark";
 
 type BookDetailProps = {
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[] | undefined>>;
+    setFavorites: Dispatch<SetStateAction<Book[]>>;
     setShowBookDetail: (value: boolean) => void;
 }
 

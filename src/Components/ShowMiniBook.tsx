@@ -10,7 +10,7 @@ interface EachBookProps {
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
     favorites?: Book[] | undefined;
     showFrom: string;
-    setFavorites: Dispatch<SetStateAction<Book[] | undefined>>;
+    setFavorites: Dispatch<SetStateAction<Book[]>>;
 }
 
 const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, setFavorites, showFrom }: EachBookProps) => {
@@ -43,9 +43,9 @@ const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, setFa
     };
 
     const remove = (title: string) => {
-        const safeSetFavorites = setFavorites || (() => { });
-        const removed = favorites?.filter((fav) => fav.title !== title);
-        safeSetFavorites(removed);
+        if (!favorites) return; // No need to proceed if favorites is undefined.
+        const removed = favorites.filter((fav) => fav.title !== title);
+        setFavorites(removed);
         removeNotify(title);
     }
 

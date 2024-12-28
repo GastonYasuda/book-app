@@ -37,7 +37,8 @@ const BookList = () => {
                     recommendBooksArray={recommendBooksArray}
                     setShowBookDetail={setShowBookDetail}
                     setShowRecommendedPopUp={setShowRecommendedPopUp}
-                    onHide={() => setShowRecommendedPopUp(false)} />}
+                    onHide={() => setShowRecommendedPopUp(false)}
+                    setFavorites={setFavorites} />}
 
             <div className="main" id="top">
                 <AppHeader

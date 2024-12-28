@@ -9,7 +9,7 @@ type bookResult = {
     result: Book[];
     setResult: Dispatch<SetStateAction<Book[]>>;
     favorites: Book[];
-    setFavorites: Dispatch<SetStateAction<Book[] | undefined>>;
+    setFavorites: Dispatch<SetStateAction<Book[]>>;
     setSelectedValue: Dispatch<SetStateAction<selectedValueProp | undefined>>;
     setShowBookDetail: (value: boolean) => void;
 }
@@ -46,7 +46,6 @@ const BookResult = ({ selectedValue, result, setResult, favorites, setFavorites,
                             setFavorites={setFavorites}
                             setSelectedValue={setSelectedValue}
                             setShowBookDetail={setShowBookDetail} />);
-
                 })}
             </div>
 

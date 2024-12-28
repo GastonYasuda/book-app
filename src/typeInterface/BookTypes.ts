@@ -33,7 +33,7 @@ export type bookContextType={
     recomemendedBookCount:number;
     setRecommendedBookCount:(value:number)=>void;  
     favorites:Book[];
-    setFavorites:Dispatch<SetStateAction<Book[] | undefined>>
+    setFavorites:Dispatch<SetStateAction<Book[]>>
     recommendBooksArray:Book[];
 }
 

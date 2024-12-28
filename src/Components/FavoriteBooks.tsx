@@ -9,7 +9,7 @@ interface EachBookProps {
     showMobileFavs: boolean;
     setShowMobileFavs: Dispatch<SetStateAction<boolean>>;
     setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
-    setFavorites: Dispatch<SetStateAction<Book[] | undefined>>;
+    setFavorites: Dispatch<SetStateAction<Book[]>>;
 }
 
 const FavoriteBooks = ({ favorites, showMobileFavs, setShowMobileFavs, setShowBookDetail, setFavorites }: EachBookProps) => {
