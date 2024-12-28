@@ -22,24 +22,26 @@ const FavMark = ({ boo, favorites, setFavorites }: FavMarkProps) => {
 
     const addNotify = () => {
         toast.success(`${boo.title} Added to Favs!`, {
-            position: "top-right",
-            theme: "light",
-            autoClose: 1500,
+            position: "bottom-left",
+            autoClose: 5000,
             hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
         });
     };
     const removeNotify = () => {
         toast.warn(`${boo.title} Removed from Favs!`, {
-            position: "top-right",
-            theme: "light",
-            autoClose: 1500,
+            position: "bottom-left",
+            autoClose: 5000,
             hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
         });
     };
 

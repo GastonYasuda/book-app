@@ -112,18 +112,7 @@ const BookList = () => {
                 </div>
             </div>
             <Footer />
-            <ToastContainer
-                position="top-right"
-                theme="light"
-                autoClose={1500}
-                hideProgressBar
-                newestOnTop
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable={false}
-                pauseOnHover={false}
-            />
+            <ToastContainer />
         </BookContexProvider>
     );
 };

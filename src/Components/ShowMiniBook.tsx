@@ -32,13 +32,14 @@ const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, setFa
 
     const removeNotify = (title: string) => {
         toast.warn(`${title} Removed from Favs!`, {
-            position: "top-right",
-            theme: "light",
-            autoClose: 1500,
+            position: "bottom-left",
+            autoClose: 5000,
             hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
         });
     };
 

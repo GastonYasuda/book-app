@@ -28,6 +28,8 @@
     & img {
         width: 150px;
         height: 100%;
+        cursor: pointer;
+
     }
 
     .header_countCards {
@@ -35,6 +37,10 @@
         flex-direction: row;
         gap: 15px;
         justify-content: center;
+
+        & .card:nth-child(2) {
+            cursor: pointer;
+        }
 
         & .card-body {
             background-color: rgb(42, 42, 42);
@@ -69,6 +75,11 @@
     overflow: hidden;
 }
 
+.form-select {
+    cursor: pointer;
+    background-color: rebeccapurple;
+}
+
 .filterAsideContainer {
     min-height: 100vh;
     flex: 1;
@@ -99,16 +110,6 @@
     flex: 2;
     margin: 0 25px;
 
-    & .bookList_container-counterBooks-header {
-        z-index: 60;
-
-        & .stickyClass_container {
-            padding-bottom: 3px;
-            background-color: #242424;
-            /* filter: drop-shadow(0px 11px 5px rgba(0, 0, 0, 0.25)); */
-            z-index: 100;
-        }
-    }
 
     & .bookList_container-counterBooks-body {
         position: relative;
@@ -234,6 +235,7 @@
         width: 150px;
         height: 345px !important;
         color: #fff;
+        cursor: pointer;
     }
 
     & a {
@@ -314,6 +316,7 @@
         flex-direction: row;
         position: relative;
         align-items: flex-end;
+        cursor: pointer;
 
         & .favBookSection_img {
             width: 50px;
@@ -434,6 +437,10 @@
 
         & .header_countCards {
             margin: 15px;
+
+            & .card:nth-child(3) {
+                cursor: pointer;
+            }
 
             & .card-body {
                 min-width: 50px;
