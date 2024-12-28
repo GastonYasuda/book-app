@@ -29,11 +29,15 @@ const AppHeader = ({ favorites, recommendsCount, setShowRecommendedPopUp, setSel
 
     return (
         <div className="header_logo" onClick={() => { setSelectedValue(undefined) }}>
-            <img src={logo} alt="logo" />
 
-            <CountCards favorites={favorites} recommendsCount={recommendsCount} setShowMobileFavs={setShowMobileFavs} setShowRecommendedPopUp={setShowRecommendedPopUp} />
+            <div className="logo_hamburguer">
+                <img src={logo} alt="logo" />
+                <Hamburger toggled={isOpen} toggle={setOpen} color="#FFFF" />
+            </div>
 
-            <Hamburger toggled={isOpen} toggle={setOpen} color="#FFFF" />
+            <CountCards favorites={favorites} recommendsCount={recommendsCount} setShowRecommendedPopUp={setShowRecommendedPopUp} setShowMobileFavs={setShowMobileFavs} />
+
+
 
         </div>
     );

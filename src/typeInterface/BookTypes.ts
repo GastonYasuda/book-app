@@ -24,25 +24,17 @@ export type Library = {
     library: LibraryEntry[];
 };
 
-
 export type bookContextType={
     bookList: Book[],
     setBookList:(value:Book[])=>void,
     favArray:Book[],
     setFavArray: Dispatch<SetStateAction<Book[]>> ,
-    AddFav:(value:string | Book[])=>void,
-    fav:boolean,
-    booky:Book[],
-    favStorage:Book[],
-    storedBook:Book[],
-    selectedValue?:Book[],
-    setSelectedValue?:()=>void;
     forBookDetail:string;
     setForBookDetail:(value:Book['ISBN'])=>void;
     recomemendedBookCount:number;
     setRecommendedBookCount:(value:number)=>void;  
     favorites:Book[];
-    setFavorites:Dispatch<SetStateAction<Book[]>>
+    setFavorites:Dispatch<SetStateAction<Book[]>|undefined>
     recommendBooksArray:Book[];
 }
 

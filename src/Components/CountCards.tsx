@@ -5,11 +5,9 @@ import BookContext from '../Context/BookContext';
 
 interface EachBookProps {
     favorites: Book[];
-    setFavorites?: Dispatch<SetStateAction<Book[]>>;
+    recommendsCount: Book[];
     setShowMobileFavs: Dispatch<SetStateAction<boolean>>;
     setShowRecommendedPopUp: Dispatch<SetStateAction<boolean>>;
-    recomemendedBookCount?: number;
-    recommendsCount: Book[];
 }
 
 const CountCards = ({ favorites, recommendsCount, setShowMobileFavs, setShowRecommendedPopUp }: EachBookProps) => {
@@ -17,22 +15,21 @@ const CountCards = ({ favorites, recommendsCount, setShowMobileFavs, setShowReco
     const { bookList } = useContext(BookContext) as bookContextType
 
 
-
     return (
-        <div className="bookList_container-countCards">
-            <Card style={{ width: '11rem' }}>
+        <div className="header_countCards">
+            <Card >
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted tituloCount">Books</Card.Subtitle>
                     <Card.Text className='countCard-p'>{bookList.length}</Card.Text>
                 </Card.Body>
             </Card>
-            <Card style={{ width: '11rem' }} onClick={() => { setShowRecommendedPopUp(true) }}>
+            <Card onClick={() => { setShowRecommendedPopUp(true) }}>
                 <Card.Body >
-                    <Card.Subtitle className="mb-2 text-muted tituloCount">Reco Books</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted tituloCount">Recommended</Card.Subtitle>
                     <Card.Text className='countCard-p'>{recommendsCount.length}</Card.Text>
                 </Card.Body>
             </Card>
-            <Card style={{ width: '11rem' }} onClick={() => { setShowMobileFavs(true) }}>
+            <Card onClick={() => { setShowMobileFavs(true) }}>
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted tituloCount">Favs</Card.Subtitle>
                     <Card.Text className='countCard-p'>{favorites?.length}</Card.Text>

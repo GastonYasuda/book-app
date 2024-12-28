@@ -9,24 +9,22 @@ interface EachBookProps {
     favorites: Book[];
     setFavorites: Dispatch<SetStateAction<Book[]>>;
     setSelectedValue: (value: undefined) => void;
-    setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
+    setShowBookDetail: (value: boolean) => void;
 }
 
 const EachBook = ({ boo, favorites, setFavorites, setSelectedValue, setShowBookDetail }: EachBookProps) => {
     const { setForBookDetail } = useContext(BookContext) as bookContextType
 
-    const test = () => {
+    const showEachBook = () => {
         setSelectedValue(undefined)
         setShowBookDetail(true)
         setForBookDetail(boo.ISBN)
-        console.log('hello');
-
     }
 
     return (
         <div className="eachBookButton">
             <FavMark boo={boo} favorites={favorites} setFavorites={setFavorites} />
-            <div onClick={test}>
+            <div onClick={showEachBook}>
                 <Card>
                     <Card.Img variant="top" src={boo.cover} className="cardImg" />
                     <Card.Body>

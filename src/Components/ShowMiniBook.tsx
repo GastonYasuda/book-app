@@ -6,22 +6,19 @@ import BookContext from "../Context/BookContext";
 
 
 interface EachBookProps {
-    favorites?: Book[];
-    setFavorites?: Dispatch<SetStateAction<Book[]> | undefined>;
-    setShowMobileFavs?: Dispatch<SetStateAction<boolean>>
-    setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
-    showFrom: string;
     recommendBooksArray?: Book[];
+    setShowBookDetail: Dispatch<SetStateAction<boolean | undefined>>;
+    favorites?: Book[] | undefined;
+    showFrom: string;
 }
 
-const ShowMiniBook = ({ recommendBooksArray, favorites, setFavorites, setShowBookDetail, showFrom }: EachBookProps) => {
+const ShowMiniBook = ({ recommendBooksArray, setShowBookDetail, favorites, showFrom }: EachBookProps) => {
 
-    const { setForBookDetail } = useContext(BookContext) as bookContextType
+    const { setForBookDetail, setFavorites } = useContext(BookContext) as bookContextType
 
     const [showStateFrom, setshowStateFrom] = useState<Book[] | undefined>([]);
 
     useEffect(() => {
-
         if (showFrom === 'favorites') {
             setshowStateFrom(favorites)
         } else if (recommendBooksArray && showFrom === 'recommended') {
@@ -56,7 +53,7 @@ const ShowMiniBook = ({ recommendBooksArray, favorites, setFavorites, setShowBoo
     }
 
     return (
-        <div >
+        <>
             {Array.isArray(showStateFrom) && showStateFrom.map((favBook, i) => (
                 <div key={i} className="ShowMiniBook_container">
                     {showFrom === 'favorites' ?
@@ -72,7 +69,7 @@ const ShowMiniBook = ({ recommendBooksArray, favorites, setFavorites, setShowBoo
                     </div>
                 </div>
             ))}
-        </div>
+        </>
     );
 };
 
