@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Book } from "../typeInterface/BookTypes";
 import closeButton from '../assets/close-button.png';
 import Button from 'react-bootstrap/Button';
@@ -14,11 +14,6 @@ interface EachBookProps {
 
 const FavoriteBooks = ({ favorites, showMobileFavs, setShowMobileFavs, setShowBookDetail, setFavorites }: EachBookProps) => {
 
-    useEffect(() => {
-        console.log('favoriteBooks', favorites);
-
-
-    }, [favorites])
 
     return (
         <div className={`bookList_container-favorites ${showMobileFavs ? 'showFav' : ''}`}>

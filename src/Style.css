@@ -338,11 +338,10 @@
 }
 
 .gotTopArrow {
-    display: none;
     position: fixed;
     width: 100%;
     bottom: 0px;
-    right: -80%;
+    right: -93%;
     z-index: 150;
     border: none;
     opacity: 0.4;
@@ -505,6 +504,7 @@
 
     .gotTopArrow {
         display: block;
+        left: 82%;
     }
 
     .backgroundImg {
