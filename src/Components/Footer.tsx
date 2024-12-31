@@ -44,7 +44,7 @@ const Footer = () => {
                     <span>
                         Conocé mis proyectos en
                         <a
-                            href="https://book-app-gaston.netlify.app/"
+                            href="https://gastonyasudaportfolio.netlify.app/"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
